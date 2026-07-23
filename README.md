@@ -4,7 +4,7 @@ This repository contains an end-to-end experimentation framework, raw dataset, a
 
 ---
 
-## 📋 Campaign Background & Execution Strategy
+## Campaign Background & Execution Strategy
 
 To understand the dataset, we first need to establish the real-world campaign setup, user journey, and ad mechanics behind the experiment.
 
@@ -12,7 +12,7 @@ To understand the dataset, we first need to establish the real-world campaign se
 * **The Campaign Window:** A 30-day live paid media campaign run from June 1, 2026, to June 30, 2026.
 * **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
 
-### 📐 Experiment Architecture & UI Flow
+### Experiment Architecture & UI Flow
 
 ![Lead Capture Form Experiment Diagram](images/experiment_design.png)
 
