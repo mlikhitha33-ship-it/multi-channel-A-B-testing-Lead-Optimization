@@ -21,7 +21,7 @@ To understand the dataset, we first need to establish the real-world campaign se
 │      (rest of page,         │  <- below the fold, not seen
 │   supporting content etc.)  │     until user scrolls
 └─────────────────────────────┘
-```
+
 
 ---
 
@@ -85,6 +85,7 @@ Each row in the dataset represents a single visitor session.
 | `ad_spend_cpc` | Float | Economics | Cost-Per-Click incurred for that specific visitor click. |
 
 ---
+```
 
 Exploratory Data Analysis (EDA)
             ↓
@@ -95,7 +96,7 @@ Hypothesis Testing
 Validated Findings
             ↓
 Business Recommendations
-
+```
 ---
 
 ## 🔍 Exploratory Data Analysis and Validation Checks
