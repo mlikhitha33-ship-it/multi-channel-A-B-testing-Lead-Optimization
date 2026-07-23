@@ -39,13 +39,13 @@ When a user clicked an ad or email link, a split-URL experiment router evaluated
 
 1. **Single-Variant Experience:** If User X clicked a Google Search ad, the router assigned them to Variant B. User X saw only the interactive diagnostic module and was completely unaware that the 6-field or 3-field forms existed.
 2. **Session Persistence:** The experiment router set a first-party cookie tied to `lead_id`. If User X refreshed the browser or returned two days later, they were consistently shown Variant B.
-3. **Simultaneous Execution:** All three form variants ran concurrently across every channel. Running the variants simultaneously—rather than sequentially—ensured that outside factors like seasonality, day-of-week trends, and market news affected all three groups equally.
+3. **Simultaneous Execution:** All three form variants ran concurrently across every channel. Running the variants simultaneously rather than sequentially ensured that outside factors like seasonality, day-of-week trends, and market news affected all three groups equally.
 
 ---
 
 ## 📊 Acquisition Channels & Form Tolerances
 
-Marketing traffic is not homogeneous. A user actively seeking a solution responds differently to friction than a user casually scrolling a social feed. 
+Marketing traffic is not homogeneous. A user actively seeking a solution responds differently to friction than a user casually scrolling a social feed.
 
 In this campaign, 45,000 unique visitor sessions were logged across four acquisition channels:
 
@@ -60,13 +60,11 @@ In this campaign, 45,000 unique visitor sessions were logged across four acquisi
 
 Visitors were routed equally across three experimental variants (~15,000 sessions per group):
 
-Three variants (the test arms, what's being compared):
-
 * **`Control` (Moderate Form Length - 6 Fields):** The standard industry baseline asking for Full Name, Work Email, Phone Number, Company Name, Team Size, and Primary Business Goal.
 * **`VarA_ShortForm` (Short Form Length - 3 Fields):** A low-friction layout requesting only Full Name, Work Email, and Company Name.
 * **`VarB_Interactive` (Multi-Step Diagnostic Flow):** A four-screen interactive widget asking 3 tap-to-select diagnostic questions (for example, "What is your main growth bottleneck?") before prompting for a final contact screen (Name, Email, and Phone Number).
 
-KPIs / metrics (what's being measured about those variants) — per your README's metric hierarchy, there are actually three tiers, but more than three individual metrics:
+Each variant is evaluated against four metrics, organized by priority:
 
 | Tier | Metric |
 | :--- | :--- |
@@ -95,8 +93,9 @@ Each row in the dataset represents a single visitor session.
 
 ---
 
-## Analysis RoadMap
-```
+## 🗺️ Analysis Roadmap
+
+```text
 Exploratory Data Analysis (EDA)
             ↓
 EDA Insights to Validate
@@ -107,6 +106,7 @@ Validated Findings
             ↓
 Business Recommendations
 ```
+
 ---
 
 ## 🔍 Exploratory Data Analysis and Validation Checks
@@ -151,6 +151,11 @@ Based on that, I rebuilt the last three plots split by the relevant grouping var
 
 **CPC, paid channels only, split by channel**, resolved the earlier odd shape. Paid Social and Paid Search each show their own roughly flat distribution over their respective price range, and the earlier bump was just the overlap of the two histograms drawn on top of each other rather than a real pattern in the cost data.
 
+### Note on the data
+
+This dataset was generated synthetically (see `generate_dataset.py`) with channel level conversion rates and quality score distributions defined directly in the generation script. That means the quality tradeoff described above is confirming what was designed into the data rather than an emergent finding from real user behavior. I'm including this EDA process here to show the analysis approach and validation habits I'd apply to a real test, not as a claim about actual market behavior.
+
+---
 
 ## EDA Summary and Next Steps
 
@@ -169,6 +174,7 @@ The following analyses will be performed during the hypothesis testing phase:
 | Cost Per Click (CPC) | Compare average CPC between Paid Search and Paid Social campaigns. | Independent Samples t-Test (or Mann-Whitney U Test) |
 
 ---
+
 ## 🧪 Hypothesis Testing
 
 This section states the formal hypotheses and test methodology for each analysis before presenting results, following the tests laid out in the plan table above.
@@ -204,6 +210,7 @@ Three pairwise comparisons are run off the same dataset here, which calls for a 
 Still open per the plan table, not yet run.
 
 ---
+
 ## ✅ Validated Findings
 
 This section covers the two tests that matter most for the actual business decision, conversion rate as the primary KPI and lead quality score as the guardrail. Form completion time and CPC by channel are still open from the plan table above and aren't covered here yet.
@@ -244,8 +251,6 @@ VarB_Interactive is the only variant that improves the primary metric without an
 
 ---
 
----
-
 ## 🛠️ How to Run the Analysis Locally
 
 ### 1. Requirements
@@ -254,7 +259,6 @@ Install the required Python packages:
 ```bash
 pip install pandas numpy matplotlib seaborn scipy statsmodels
 ```
-
 
 ---
 
