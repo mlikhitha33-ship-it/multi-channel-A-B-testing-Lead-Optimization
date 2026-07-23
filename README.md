@@ -204,6 +204,45 @@ Three pairwise comparisons are run off the same dataset here, which calls for a 
 Still open per the plan table, not yet run.
 
 ---
+## ✅ Validated Findings
+
+This section covers the two tests that matter most for the actual business decision, conversion rate as the primary KPI and lead quality score as the guardrail. Form completion time and CPC by channel are still open from the plan table above and aren't covered here yet.
+
+### Conversion rate (primary KPI)
+
+An omnibus chi-square test across all three variants came back significant (chi2 = 48.45, p < 0.000001), confirming a real difference exists somewhere among the groups before looking at individual comparisons.
+
+| Variant | Visitors | Conversions | Conversion Rate | Lift vs Control | p-value |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Control | 14,753 | 604 | 4.09% | Baseline | — |
+| VarA_ShortForm | 15,108 | 775 | 5.13% | +25.3% relative | 0.00001 |
+| VarB_Interactive | 15,139 | 885 | 5.85% | +42.8% relative | < 0.000001 |
+
+Both variants beat Control on their own, so a direct VarB vs VarA test was run to check whether the two treatments differ from each other, not just from the baseline. VarB converts at a significantly higher rate than VarA as well (z = 2.73, p = 0.003). The full ranking holds up statistically, not just by eyeballing the raw rates:
+
+VarB_Interactive > VarA_ShortForm > Control
+
+Three pairwise comparisons were run off the same dataset here (VarA vs Control, VarB vs Control, VarB vs VarA), which technically calls for a multiple comparisons adjustment. Applying a conservative Bonferroni correction (requiring p < 0.017 instead of 0.05) still leaves all three results significant, so the ranking isn't an artifact of running multiple tests.
+
+### Lead quality score (guardrail KPI)
+
+A one-way ANOVA across the three variants was significant (F = 124.58, p < 0.000001). Levene's test showed the groups don't have equal variance (p < 0.0001), so the result was cross checked with Welch's ANOVA, which doesn't assume equal variance. Welch's version agreed (F = 110.14, p = 3.76e-45), so the finding holds regardless of which test is used.
+
+Pairwise comparisons (Games-Howell, the variance robust version of Tukey) show:
+
+| Comparison | Mean Difference | p-value | Result |
+| :--- | :--- | :--- | :--- |
+| Control vs VarA_ShortForm | -5.00 | < 0.0001 | VarA is significantly lower |
+| Control vs VarB_Interactive | +0.49 | 0.39 | Not significant, statistically tied |
+| VarA_ShortForm vs VarB_Interactive | -5.49 | < 0.0001 | VarB is significantly higher |
+
+This confirms the pattern from the EDA boxplots. VarA_ShortForm converts more visitors but at the cost of lead quality, its leads score meaningfully lower than both Control and VarB. VarB_Interactive holds quality steady with Control while still winning on conversion.
+
+### What this means together
+
+VarB_Interactive is the only variant that improves the primary metric without any tradeoff on the guardrail metric. VarA_ShortForm looks attractive on conversion rate alone, but the quality drop means a share of those additional leads are less likely to convert further down the funnel, so the conversion win is partly hollow. Since this dataset is synthetic (see the note under Exploratory Data Analysis above), this section demonstrates the testing and validation process rather than a claim about real market behavior.
+
+---
 
 ---
 
