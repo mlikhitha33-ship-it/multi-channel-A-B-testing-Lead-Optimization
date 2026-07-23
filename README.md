@@ -1,6 +1,6 @@
 # Multi-Channel A/B Testing & Lead Optimization
 
-This repository contains an end-to-end experimentation framework, raw dataset, and post-test analytics pipeline designed to evaluate lead generation performance across paid and organic acquisition channels.
+This repository contains an end-to-end experimentation framework, raw synthetic dataset, and post-test analytics pipeline designed to evaluate lead generation performance across paid and organic acquisition channels.
 
 ---
 
@@ -192,9 +192,7 @@ This dataset was generated synthetically (see `generate_dataset.py`) with channe
 
 ## EDA Summary and Next Steps
 
-The exploratory data analysis identified several patterns that warrant formal statistical evaluation. While these observations provide useful direction, they should not be interpreted as statistically significant findings.
-
-The following analyses will be performed during the hypothesis testing phase:
+The exploratory data analysis identified several patterns that warrant formal statistical evaluation. While these observations provide useful direction, they should not be interpreted as statistically significant findings.The following analyses will be performed during the hypothesis testing phase:
 
 | Analysis Area | Purpose | Planned Statistical Test |
 |---------------|---------|--------------------------|
@@ -314,7 +312,7 @@ This comparison is about channel pricing, not variant performance, CPC doesn't d
 
 ### What this means together
 
-VarB_Interactive is the strongest performer across the board. It improves the primary metric without any tradeoff on the guardrail metric, holding lead quality steady with Control while VarA_ShortForm trades quality away for volume. On completion time, VarB sits between the two, faster than Control but slower than VarA, a reasonable cost given it's the only variant winning cleanly on both conversion and quality. CPC by channel doesn't factor into the variant decision directly, it's channel level cost context, Paid Search leads cost more than Paid Social regardless of which form a visitor saw. Since this dataset is synthetic (see the note under Exploratory Data Analysis above), this section demonstrates the testing and validation process rather than a claim about real market behavior.
+VarB_Interactive is the strongest performer across the board. It improves the primary metric without any tradeoff on the guardrail metric, holding lead quality steady with Control while VarA_ShortForm trades quality away for volume. On completion time, VarB sits between the two, faster than Control but slower than VarA, a reasonable cost given it's the only variant winning cleanly on both conversion and quality. CPC by channel doesn't factor into the variant decision directly, it's channel level cost context, Paid Search leads cost more than Paid Social regardless of which form a visitor saw.
 
 ---
 
