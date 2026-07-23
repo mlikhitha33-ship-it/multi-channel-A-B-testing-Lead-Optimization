@@ -206,6 +206,20 @@ The exploratory data analysis identified several patterns that warrant formal st
 
 ---
 
+### Evaluation Metrics
+
+Each variant is evaluated using a hierarchy of business metrics. The **Primary KPI** determines the winning variant, **Secondary KPIs** provide additional business context, and the **Guardrail KPI** ensures the optimization does not negatively impact overall business value.
+
+| Priority | Metric | Purpose | Success Criteria |
+|----------|--------|---------|------------------|
+| **Primary KPI** | Conversion Rate | Primary objective of the experiment—maximize the percentage of visitors who become leads. | Highest statistically significant conversion rate |
+| **Secondary KPI** | Cost per Lead (CPL) | Evaluates acquisition efficiency while accounting for channel differences. | Lower or unchanged CPL |
+| **Secondary KPI** | Form Completion Time (Dwell Time) | Measures user friction during form completion. | Lower completion time without reducing conversions |
+| **Guardrail KPI** | Lead Quality Score | Ensures higher conversions are not achieved by generating lower-quality leads. | Maintain or improve lead quality |
+
+> **Why is Lead Quality a Guardrail instead of the Primary KPI?**  
+> The objective of this experiment is to optimize the lead capture form for higher conversions. Lead quality remains a critical business metric, but it serves as a **guardrail** to ensure conversion gains are not achieved at the expense of attracting lower-quality leads.
+
 ## Hypothesis Testing
 
 This section states the formal hypotheses and test methodology for each metric before presenting results, following the tests laid out in the plan table above. Each metric follows the same structure: null hypothesis, alternative hypothesis, test used, and any assumption checks that apply.
