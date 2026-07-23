@@ -206,7 +206,7 @@ The exploratory data analysis identified several patterns that warrant formal st
 
 ---
 
-## 🧪 Hypothesis Testing
+## Hypothesis Testing
 
 This section states the formal hypotheses and test methodology for each metric before presenting results, following the tests laid out in the plan table above. Each metric follows the same structure: null hypothesis, alternative hypothesis, test used, and any assumption checks that apply.
 
@@ -319,7 +319,7 @@ VarB_Interactive is the strongest performer across the board. It improves the pr
 Ship VarB_Interactive. It's the only variant that wins on conversion rate without giving up anything on lead quality, the improvement holds after correcting for running multiple comparisons, and its completion time, while longer than the short form, is still well under Control's. VarA_ShortForm isn't a safe alternative despite its own conversion lift, since that lift comes from letting weaker leads through, which is exactly what the guardrail metric was there to catch.
 
 
-## 🛠️ How to Run the Analysis Locally
+## How to Run the Analysis Locally
 
 ### 1. Requirements
 Install the required Python packages:
