@@ -86,6 +86,18 @@ Each row in the dataset represents a single visitor session.
 
 ---
 
+Exploratory Data Analysis (EDA)
+            ↓
+EDA Insights to Validate
+            ↓
+Hypothesis Testing
+            ↓
+Validated Findings
+            ↓
+Business Recommendations
+
+---
+
 ## 🔍 Exploratory Data Analysis and Validation Checks
 
 Before running any hypothesis test I wanted to confirm the randomization actually held and get a feel for what the data looked like, so this section walks through that process.
