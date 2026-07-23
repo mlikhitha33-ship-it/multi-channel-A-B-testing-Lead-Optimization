@@ -1,4 +1,4 @@
-# Multi-Channel A/B Testing & Lead Optimization
+<img width="857" height="407" alt="image" src="https://github.com/user-attachments/assets/d1b1ff27-bf6e-47bf-851d-253dddb9a26a" /># Multi-Channel A/B Testing & Lead Optimization
 
 This repository contains an end-to-end experimentation framework, raw synthetic dataset and post-test analytics pipeline designed to evaluate lead generation performance across paid and organic acquisition channels.
 
@@ -314,7 +314,10 @@ This comparison is about channel pricing, not variant performance, CPC doesn't d
 
 VarB_Interactive is the strongest performer across the board. It improves the primary metric without any tradeoff on the guardrail metric, holding lead quality steady with Control while VarA_ShortForm trades quality away for volume. On completion time, VarB sits between the two, faster than Control but slower than VarA, a reasonable cost given it's the only variant winning cleanly on both conversion and quality. CPC by channel doesn't factor into the variant decision directly, it's channel level cost context, Paid Search leads cost more than Paid Social regardless of which form a visitor saw.
 
----
+### Recommendation
+
+Ship VarB_Interactive. It's the only variant that wins on conversion rate without giving up anything on lead quality, the improvement holds after correcting for running multiple comparisons, and its completion time, while longer than the short form, is still well under Control's. VarA_ShortForm isn't a safe alternative despite its own conversion lift, since that lift comes from letting weaker leads through, which is exactly what the guardrail metric was there to catch.
+
 
 ## 🛠️ How to Run the Analysis Locally
 
