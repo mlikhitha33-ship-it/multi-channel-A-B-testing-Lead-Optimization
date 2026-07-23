@@ -141,21 +141,22 @@ Based on that, I rebuilt the last three plots split by the relevant grouping var
 
 **CPC, paid channels only, split by channel**, resolved the earlier odd shape. Paid Social and Paid Search each show their own roughly flat distribution over their respective price range, and the earlier bump was just the overlap of the two histograms drawn on top of each other rather than a real pattern in the cost data.
 
-## EDA Insights Planned for Validation
 
-The exploratory data analysis (EDA) identified several areas that warrant statistical validation. The following table summarizes the key observations that will be formally evaluated during the hypothesis testing phase.
+## EDA Summary and Next Steps
 
-| Area of Analysis | EDA Observation | Statistical Test | H₀ | H₁ |
-|------------------|-----------------|------------------|----|----|
-| Sample Ratio Mismatch (SRM) | Visitor allocation appears consistent with the intended traffic split across variants. | Chi-Square Goodness-of-Fit | TBD | TBD |
-| Traffic Source Across Variants | Traffic sources appear evenly distributed across the experimental variants. | Chi-Square Test of Independence | TBD | TBD |
-| Device Distribution Across Variants | Mobile and Desktop users appear proportionally distributed across all variants. | Chi-Square Test of Independence | TBD | TBD |
-| Conversion Rate Across Variants | Exploratory summaries suggest differences in conversion rates between variants. | Chi-Square Test of Independence / Two-Proportion Z-Test | TBD | TBD |
-| Form Completion Time | Average form completion time appears to vary across form designs. | One-Way ANOVA (or Kruskal-Wallis) | TBD | TBD |
-| Lead Quality Score | Average lead quality appears to differ across variants. | One-Way ANOVA (or Welch ANOVA) | TBD | TBD |
-| Cost Per Click (CPC) by Channel | CPC appears to differ between Paid Search and Paid Social campaigns. | Independent Samples t-Test (or Mann-Whitney U Test) | TBD | TBD |
+The exploratory data analysis identified several patterns that warrant formal statistical evaluation. While these observations provide useful direction, they should not be interpreted as statistically significant findings.
 
-> **Note:** The observations above are exploratory in nature and should not be interpreted as statistically significant findings. Formal hypothesis testing in the next phase will determine whether the observed differences are statistically significant or attributable to random sampling variation.
+The following analyses will be performed during the hypothesis testing phase:
+
+| Analysis Area | Purpose | Planned Statistical Test |
+|---------------|---------|--------------------------|
+| Sample Ratio Mismatch (SRM) | Validate that traffic was randomly assigned to each experimental variant. | Chi-Square Goodness-of-Fit |
+| Traffic Source Distribution | Verify that acquisition channels are balanced across variants. | Chi-Square Test of Independence |
+| Device Distribution | Verify that device types are balanced across variants. | Chi-Square Test of Independence |
+| Conversion Rate | Determine whether conversion rates differ between variants. | Chi-Square Test of Independence / Two-Proportion Z-Test |
+| Form Completion Time | Determine whether average completion times differ between variants. | One-Way ANOVA (or Kruskal-Wallis) |
+| Lead Quality Score | Determine whether average lead quality differs between variants. | One-Way ANOVA (or Welch ANOVA) |
+| Cost Per Click (CPC) | Compare average CPC between Paid Search and Paid Social campaigns. | Independent Samples t-Test (or Mann-Whitney U Test) |
 
 ---
 
