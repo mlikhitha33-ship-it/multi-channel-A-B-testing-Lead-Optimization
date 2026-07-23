@@ -10,7 +10,27 @@ To understand the dataset, we first need to establish the real-world campaign se
 
 * **The Business Offer:** An enterprise growth consultation and audit request form hosted on a dedicated landing page.
 * **The Campaign Window:** A 30-day live paid media campaign run from June 1, 2026, to June 30, 2026.
-* **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn/Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
+* **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
+
+---
+
+## 🔀 Traffic Routing Mechanics & Core Principles
+
+A common point of confusion in A/B testing is whether a single user sees multiple form layouts. **Each individual visitor saw only one specific variant during their journey.**
+
+When a user clicked an ad or email link, a split-URL experiment router evaluated the incoming session and assigned the user to a treatment group before the page rendered:
+
+```text
+                               ┌──> 33% of visitors ──> Control (6-Field Static Form)
+[ User Clicks Ad / Link ] ────┼──> 33% of visitors ──> Variant A (3-Field Short Form)
+                               └──> 34% of visitors ──> Variant B (Interactive Diagnostic)
+```
+
+### Core Routing Principles
+
+1. **Single-Variant Experience:** If User X clicked a Google Search ad, the router assigned them to Variant B. User X saw only the interactive diagnostic module and was completely unaware that the 6-field or 3-field forms existed.
+2. **Session Persistence:** The experiment router set a first-party cookie tied to `lead_id`. If User X refreshed the browser or returned two days later, they were consistently shown Variant B.
+3. **Simultaneous Execution:** All three form variants ran concurrently across every channel. Running the variants simultaneously—rather than sequentially—ensured that outside factors like seasonality, day-of-week trends, and market news affected all three groups equally.
 
 ---
 
@@ -20,7 +40,7 @@ Marketing traffic is not homogeneous. A user actively seeking a solution respond
 
 In this campaign, 45,000 unique visitor sessions were logged across four acquisition channels:
 
-* **Paid Search (40% of traffic):** High-intent visitors arriving from Google Search ads. These users were actively looking for a solution and demonstrated tolerance for a **moderate form length** (defined as 6 standard fields capturing both contact details and initial business context), provided every field felt directly relevant to their search query.
+* **Paid Search (40% of traffic):** High-intent visitors arriving from Google Search ads. These users were actively looking for a solution and demonstrated tolerance for a **moderate form length** (defined as 6 standard fields capturing contact details and business context), provided every field felt directly relevant to their search query.
 * **Paid Social (30% of traffic):** Mobile-heavy visitors arriving from LinkedIn and Meta feed ads. Because social ads interrupt active scrolling, these users exhibited low tolerance for traditional forms and responded best to quick, tap-based interactions.
 * **Email Direct (15% of traffic):** Warm leads arriving from existing subscriber newsletters. These users already possessed brand familiarity, yielding stable conversion rates across all form layouts.
 * **Organic (15% of traffic):** Unpaid search and direct referral visitors, serving as a baseline group uninfluenced by paid ad positioning.
@@ -29,11 +49,11 @@ In this campaign, 45,000 unique visitor sessions were logged across four acquisi
 
 ## 🧪 Experimental Setup & Form Variants
 
-Visitors were routed equally across three experimental variants (~15,000 sessions per group) using a split-URL experiment router:
+Visitors were routed equally across three experimental variants (~15,000 sessions per group):
 
 * **`Control` (Moderate Form Length - 6 Fields):** The standard industry baseline asking for Full Name, Work Email, Phone Number, Company Name, Team Size, and Primary Business Goal.
 * **`VarA_ShortForm` (Short Form Length - 3 Fields):** A low-friction layout requesting only Full Name, Work Email, and Company Name.
-* **`VarB_Interactive` (Multi-Step Diagnostic Flow):** A four-screen interactive widget asking 3 tap-to-select diagnostic questions (e.g., "What is your main growth bottleneck?") before prompting for a final contact screen (Name, Email, and Phone Number).
+* **`VarB_Interactive` (Multi-Step Diagnostic Flow):** A four-screen interactive widget asking 3 tap-to-select diagnostic questions (for example, "What is your main growth bottleneck?") before prompting for a final contact screen (Name, Email, and Phone Number).
 
 ---
 
@@ -95,3 +115,56 @@ Install the required Python packages:
 
 ```bash
 pip install pandas numpy matplotlib seaborn scipy statsmodels
+```
+
+### 2. Run Analysis Script
+Execute the following script to load the dataset and compute statistical significance:
+
+```python
+import numpy as np
+import pandas as pd
+from statsmodels.stats.proportion import proportions_ztest
+
+# Load raw experiment dataset
+df = pd.read_csv('lead_experiment_dataset.csv')
+
+# Aggregate conversion metrics per variant
+summary = (
+    df.groupby('variant')
+    .agg(
+        total_visitors=('lead_id', 'count'),
+        total_leads=('converted', 'sum'),
+        conversion_rate=('converted', 'mean'),
+    )
+    .reset_index()
+)
+
+# Extract Control baseline totals
+control_leads = summary.loc[summary['variant'] == 'Control', 'total_leads'].values[0]
+control_visitors = summary.loc[summary['variant'] == 'Control', 'total_visitors'].values[0]
+
+# Compute two-sample Z-tests against Control
+p_vals = []
+for idx, row in summary.iterrows():
+    if row['variant'] == 'Control':
+        p_vals.append(1.0)
+    else:
+        counts = np.array([row['total_leads'], control_leads])
+        nobs = np.array([row['total_visitors'], control_visitors])
+        _, pval = proportions_ztest(counts, nobs)
+        p_vals.append(pval)
+
+summary['p_value'] = p_vals
+print(summary.to_string(index=False))
+```
+
+---
+
+## 📁 Repository Structure
+
+```text
+├── lead_experiment_dataset.csv  # Raw 45,000-row multi-channel dataset
+├── analysis_notebook.ipynb      # Complete Jupyter/Colab notebook with visualizations
+├── README.md                    # Project documentation and campaign guide
+└── requirements.txt             # Python dependencies
+```
