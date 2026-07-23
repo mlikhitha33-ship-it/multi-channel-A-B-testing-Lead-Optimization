@@ -1,4 +1,4 @@
-<img width="857" height="407" alt="image" src="https://github.com/user-attachments/assets/d1b1ff27-bf6e-47bf-851d-253dddb9a26a" /># Multi-Channel A/B Testing & Lead Optimization
+# Multi-Channel A/B Testing & Lead Optimization
 
 This repository contains an end-to-end experimentation framework, raw synthetic dataset and post-test analytics pipeline designed to evaluate lead generation performance across paid and organic acquisition channels.
 
