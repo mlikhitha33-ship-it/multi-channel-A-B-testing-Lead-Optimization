@@ -97,11 +97,10 @@ Visitors were routed equally across three experimental variants (~15,000 session
 * **`VarA_ShortForm` (Short Form Length - 3 Fields):** A low-friction layout requesting only Full Name, Work Email, and Company Name.
 * **`VarB_Interactive` (Multi-Step Diagnostic Flow):** A four-screen interactive widget asking 3 tap-to-select diagnostic questions (for example, "What is your main growth bottleneck?") before prompting for a final contact screen (Name, Email, and Phone Number).
 
-Each variant is evaluated against four metrics, organized by priority:
+Each variant is evaluated using a hierarchy of business metrics organized by priority:
 
 ### Evaluation Metrics
-
-Each variant is evaluated using a hierarchy of business metrics. The **Primary KPI** determines the winning variant, **Secondary KPIs** provide additional business context, and the **Guardrail KPI** ensures the optimization does not negatively impact overall business value.
+The **Primary KPI** determines the winning variant, **Secondary KPIs** provide additional business context, and the **Guardrail KPI** ensures the optimization does not negatively impact overall business value.
 
 | Priority | Metric | Purpose | Success Criteria |
 |----------|--------|---------|------------------|
