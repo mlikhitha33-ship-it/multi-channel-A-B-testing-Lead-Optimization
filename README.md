@@ -257,9 +257,9 @@ This section states the formal hypotheses and test methodology for each metric b
 ---
 ---
 
-## ✅ Validated Findings
+## Validated Findings
 
-This section covers the two tests that matter most for the actual business decision, conversion rate as the primary KPI and lead quality score as the guardrail. Form completion time and CPC by channel are still open from the plan table above and aren't covered here yet.
+This section covers all four metrics from the plan table: conversion rate as the primary KPI, lead quality score as the guardrail, and form completion time plus CPC by channel as the two secondary metrics.
 
 ### Conversion rate (primary KPI)
 
@@ -281,19 +281,37 @@ Three pairwise comparisons were run off the same dataset here (VarA vs Control, 
 
 A one-way ANOVA across the three variants was significant (F = 124.58, p < 0.000001). Levene's test showed the groups don't have equal variance (p < 0.0001), so the result was cross checked with Welch's ANOVA, which doesn't assume equal variance. Welch's version agreed (F = 110.14, p = 3.76e-45), so the finding holds regardless of which test is used.
 
-Pairwise comparisons (Games-Howell, the variance robust version of Tukey) show:
+Pairwise comparisons (Games-Howell, the variance robust version of Tukey), reported as Group A mean minus Group B mean:
 
-| Comparison | Mean Difference | p-value | Result |
-| :--- | :--- | :--- | :--- |
-| Control vs VarA_ShortForm | -5.00 | < 0.0001 | VarA is significantly lower |
-| Control vs VarB_Interactive | +0.49 | 0.39 | Not significant, statistically tied |
-| VarA_ShortForm vs VarB_Interactive | -5.49 | < 0.0001 | VarB is significantly higher |
+| Group A | Group B | Mean A | Mean B | Diff (A - B) | p-value | Result |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Control | VarA_ShortForm | 81.12 | 76.12 | +5.00 | < 0.0001 | Control significantly higher |
+| Control | VarB_Interactive | 81.12 | 81.61 | -0.49 | 0.39 | Not significant, statistically tied |
+| VarA_ShortForm | VarB_Interactive | 76.12 | 81.61 | -5.49 | < 0.0001 | VarB significantly higher |
 
 This confirms the pattern from the EDA boxplots. VarA_ShortForm converts more visitors but at the cost of lead quality, its leads score meaningfully lower than both Control and VarB. VarB_Interactive holds quality steady with Control while still winning on conversion.
 
+### Form completion time (secondary KPI)
+
+A one-way ANOVA across the three variants was significant (F = 3059.85, p < 0.000001). Levene's test showed unequal variance (p < 0.0001), so Welch's ANOVA was used as the primary read (F = 3795.11, p < 0.000001), agreeing with the standard ANOVA.
+
+| Group A | Group B | Mean A (sec) | Mean B (sec) | Diff (A - B) | p-value | Result |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Control | VarA_ShortForm | 53.42 | 22.32 | +31.09 | < 0.0001 | Control significantly slower to complete |
+| Control | VarB_Interactive | 53.42 | 44.09 | +9.32 | < 0.0001 | Control significantly slower to complete |
+| VarA_ShortForm | VarB_Interactive | 22.32 | 44.09 | -21.77 | < 0.0001 | VarB significantly slower than VarA |
+
+This result tracks the number of fields in each form design, fewer fields take less time to complete. It's a confirmatory check rather than a new finding, and it supports the conversion rate result rather than complicating it, faster completion is consistent with why VarA and VarB both outperform Control on conversion.
+
+### Cost-per-lead by channel (secondary KPI)
+
+Paid Search costs significantly more per click than Paid Social ($3.45 vs $2.05 average, a $1.40 difference). Levene's test showed unequal variance between the two channels (p < 0.0001), so Welch's t-test was used (t = 226.13, p < 0.000001). A Mann-Whitney U check agrees (p < 0.000001).
+
+This comparison is about channel pricing, not variant performance, CPC doesn't depend on which form a visitor saw. It's included here as cost context for interpreting the conversion and quality results above, not as a test of which variant to ship.
+
 ### What this means together
 
-VarB_Interactive is the only variant that improves the primary metric without any tradeoff on the guardrail metric. VarA_ShortForm looks attractive on conversion rate alone, but the quality drop means a share of those additional leads are less likely to convert further down the funnel, so the conversion win is partly hollow. Since this dataset is synthetic (see the note under Exploratory Data Analysis above), this section demonstrates the testing and validation process rather than a claim about real market behavior.
+VarB_Interactive is the strongest performer across the board. It improves the primary metric without any tradeoff on the guardrail metric, holding lead quality steady with Control while VarA_ShortForm trades quality away for volume. On completion time, VarB sits between the two, faster than Control but slower than VarA, a reasonable cost given it's the only variant winning cleanly on both conversion and quality. CPC by channel doesn't factor into the variant decision directly, it's channel level cost context, Paid Search leads cost more than Paid Social regardless of which form a visitor saw. Since this dataset is synthetic (see the note under Exploratory Data Analysis above), this section demonstrates the testing and validation process rather than a claim about real market behavior.
 
 ---
 
