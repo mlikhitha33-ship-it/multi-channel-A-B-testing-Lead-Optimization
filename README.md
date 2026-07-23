@@ -90,22 +90,6 @@ Reducing form fields lowers submission friction and increases lead volume, but o
 
 ---
 
-## 📈 Statistical Findings & Performance Summary
-
-We evaluated the test results using a **Two-Sample Z-Test for Proportions** ($\alpha = 0.05$, $95\%$ Confidence Interval) comparing each treatment variant against the `Control` baseline.
-
-| Test Group | Visitors ($N$) | Total Leads | Conversion Rate | Lift vs. Control | $p$-value | Significance Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Control (6-Field Static)** | 15,312 | 643 | **4.20%** | Baseline | 1.0000 | Baseline |
-| **Variant A (3-Field Short)** | 14,838 | 727 | **4.90%** | **+16.6%** | $0.0028$ | Statistically Significant |
-| **Variant B (Interactive)** | 14,850 | 861 | **5.80%** | **+38.1%** | $< 0.0001$ | Statistically Significant |
-
-### Strategic Key Takeaways
-
-1. **Variant B Achieved Maximum Efficiency:** It produced a **+38.1% conversion rate lift** over Control ($p < 0.0001$) while keeping an average lead quality score of **82.1/100**, successfully passing our quality guardrail.
-2. **Channel-Specific Resonance:** Variant B recorded its highest relative lift on **Paid Social (+44%)**, proving that mobile feed traffic responds better to progressive disclosure than to traditional form fields.
-3. **Financial Outcome:** Higher conversion efficiency reduced overall Cost-Per-Lead (CPL) by **$12.40**, significantly boosting return on ad spend across paid search and paid social campaigns.
-
 ---
 
 ## 🛠️ How to Run the Analysis Locally
