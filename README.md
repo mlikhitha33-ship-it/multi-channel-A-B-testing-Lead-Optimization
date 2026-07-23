@@ -12,6 +12,17 @@ To understand the dataset, we first need to establish the real-world campaign se
 * **The Campaign Window:** A 30-day live paid media campaign run from June 1, 2026, to June 30, 2026.
 * **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
 
+```text
+┌─────────────────────────────┐
+│        HERO SECTION         │  <- visible without scrolling
+│  Headline + short pitch     │
+│  [ Lead Form / Variant ]    │  <- form or interactive module sits here
+├─────────────────────────────┤
+│      (rest of page,         │  <- below the fold, not seen
+│   supporting content etc.)  │     until user scrolls
+└─────────────────────────────┘
+```
+
 ---
 
 ## 🔀 Traffic Routing Mechanics & Core Principles
@@ -79,6 +90,10 @@ Each row in the dataset represents a single visitor session.
 
 Before running any hypothesis test I wanted to confirm the randomization actually held and get a feel for what the data looked like, so this section walks through that process.
 
+### What lead quality score actually is
+
+Before looking at any plots involving this metric, it's worth being clear on what it represents. It's a 0 to 100 proxy score meant to represent how sales-ready a converted lead is, for example whether the contact info and stated needs look like a real, qualified business inquiry rather than a low intent or junk submission. It only exists for visitors who converted, non-converters are scored 0 since there's nothing to qualify. In this dataset it's generated per variant from a normal distribution defined in `generate_dataset.py` (VarA_ShortForm centered around 76.4, Control around 81.2, VarB_Interactive around 82.1, each clipped to a 50 to 100 range), so it stands in for what a sales team would normally assess manually after a lead comes in.
+
 ### Randomization checks
 
 The first thing to check with any A/B test is whether the split actually came out balanced or whether something skewed one arm. I ran a sample ratio mismatch check comparing the actual visitor counts per variant against the expected even split. The chi-square test came back at p = 0.047, which is well within normal sampling variation for a fair three way split (SRM checks typically only flag a real problem below p = 0.001).
@@ -91,7 +106,7 @@ I also checked whether channel and device were evenly spread across the three va
 
 The first pass at EDA covered the raw shape of the data: visitor counts by variant, channel and device, plus distributions for time on page, lead quality score and CPC.
 
-The variant, channel and device counts confirmed what the README already describes: a near even three way split across variants, Paid Search as the largest channel, and mobile traffic dominating overall.
+The variant, channel and device counts matched what's described earlier in the Acquisition Channels and Experimental Setup sections above: a near even three way split across variants, Paid Search as the largest channel, and mobile traffic dominating overall.
 
 The other three plots needed a second look before they made sense.
 
@@ -107,7 +122,7 @@ The other three plots needed a second look before they made sense.
 
 Based on that, I rebuilt the last three plots split by the relevant grouping variable instead of looking at everyone combined.
 
-**Time on page, converters only, by variant**, came out as expected given the form designs: Control has the highest median, VarB_Interactive sits in the middle, and VarA_ShortForm is fastest to fill out. Fewer fields means faster to fill out, and the interactive flow lands in between a short form and a full form. This is mostly a sanity check that the data behaves the way the underlying design intends.
+**Time on page, converters only, by variant**, is not really a finding so much as a sanity check. Control has the highest median, VarB_Interactive sits in the middle, and VarA_ShortForm is fastest to fill out. That's exactly what you'd expect just from the number of fields in each form, so this isn't telling us anything new, it's confirming the data behaves the way the form designs imply before we trust anything else in it.
 
 **Lead quality score, converters only, by variant**, is the more interesting one. Control and VarB_Interactive sit at nearly the same median, with similar spread. VarA_ShortForm sits noticeably lower, with its whole box shifted down compared to the other two. So the short form converts more visitors but the leads it brings in look lower quality, while the interactive flow does not show that same tradeoff.
 
@@ -119,7 +134,18 @@ This dataset was generated synthetically (see `generate_dataset.py`) with channe
 
 ---
 
----
+## 🎯 Strategic Hypothesis & Metric Structure
+
+### The Core Trade-Off
+Reducing form fields lowers submission friction and increases lead volume, but often introduces spam or unqualified leads. Increasing form fields improves lead qualification, but causes steep drop-offs in total volume.
+
+### Hypothesis
+> *Replacing a standard 6-field static form with a multi-step interactive qualification module will increase overall lead conversion rates without dropping average lead quality scores below our guardrail threshold of 80/100.*
+
+### Metric Hierarchy
+1. **Primary KPI:** Lead Conversion Rate ($\text{Total Converted Leads} / \text{Total Unique Visitors}$).
+2. **Secondary KPIs:** Cost-Per-Lead (CPL) and Dwell Time (`time_spent_sec`).
+3. **Guardrail KPI:** Average Lead Quality Score ($0\text{--}100$). A variant must maintain an average score of $\ge 80/100$ among converted leads to be considered viable.
 
 ---
 
@@ -132,13 +158,14 @@ Install the required Python packages:
 pip install pandas numpy matplotlib seaborn scipy statsmodels
 ```
 
+
 ---
 
 ## 📁 Repository Structure
 
 ```text
 ├── lead_experiment_dataset.csv  # Raw 45,000-row multi-channel dataset
-├── analysis_notebook.ipynb      # Complete Jupyter/Colab notebook with visualizations
+├── generate_dataset.py          # Script for synthetic data generation
+├── images/                      # EDA and results visualizations
 ├── README.md                    # Project documentation and campaign guide
-└── requirements.txt             # Python dependencies
 ```
