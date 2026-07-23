@@ -1,16 +1,16 @@
 # Multi-Channel A/B Testing & Lead Optimization
 
-This repository contains an end-to-end experimentation framework, raw synthetic dataset, and post-test analytics pipeline designed to evaluate lead generation performance across paid and organic acquisition channels.
+This repository contains an end-to-end experimentation framework, raw synthetic dataset and post-test analytics pipeline designed to evaluate lead generation performance across paid and organic acquisition channels.
 
 ---
 
 ## Campaign Background & Execution Strategy
 
-To understand the dataset, we first need to establish the real-world campaign setup, user journey, and ad mechanics behind the experiment.
+To understand the dataset, we first need to establish the real-world campaign setup, user journey and ad mechanics behind the experiment.
 
 * **The Business Offer:** A free 30-minute Digital Marketing Strategy Session for mid-sized business owners looking to scale their online ad leads.
 * **The Campaign Window:** A 30-day live paid media campaign run from June 1, 2026, to June 30, 2026.
-* **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
+* **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
 
 ### Experiment Architecture & UI Flow
 
@@ -72,7 +72,7 @@ When a user clicked an ad or email link, a split-URL experiment router evaluated
 
 1. **Single-Variant Experience:** If User X clicked a Google Search ad, the router assigned them to Variant B. User X saw only the interactive diagnostic module and was completely unaware that the 6-field or 3-field forms existed.
 2. **Session Persistence:** The experiment router set a first-party cookie tied to `lead_id`. If User X refreshed the browser or returned two days later, they were consistently shown Variant B.
-3. **Simultaneous Execution:** All three form variants ran concurrently across every channel. Running the variants simultaneously rather than sequentially ensured that outside factors like seasonality, day-of-week trends, and market news affected all three groups equally.
+3. **Simultaneous Execution:** All three form variants ran concurrently across every channel. Running the variants simultaneously rather than sequentially ensured that outside factors like seasonality, day-of-week trends and market news affected all three groups equally.
 
 ---
 
