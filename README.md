@@ -102,7 +102,7 @@ In this campaign, 45,000 unique visitor sessions were logged across four acquisi
 
 ---
 
-## 🧪 Experimental Setup & Form Variants
+## Experimental Setup & Form Variants
 
 Visitors were routed equally across three experimental variants (~15,000 sessions per group):
 
@@ -121,7 +121,7 @@ Each variant is evaluated against four metrics, organized by priority:
 
 ---
 
-## 📁 Data Dictionary (`lead_experiment_dataset.csv`)
+## Data Dictionary (`lead_experiment_dataset.csv`)
 
 Each row in the dataset represents a single visitor session.
 
@@ -139,7 +139,7 @@ Each row in the dataset represents a single visitor session.
 
 ---
 
-## 🗺️ Analysis Roadmap
+## Analysis Roadmap
 
 ```text
 Exploratory Data Analysis (EDA)
@@ -155,7 +155,7 @@ Business Recommendations
 
 ---
 
-## 🔍 Exploratory Data Analysis and Validation Checks
+## Exploratory Data Analysis and Validation Checks
 
 Before running any hypothesis test I wanted to confirm the randomization actually held and get a feel for what the data looked like, so this section walks through that process.
 
@@ -321,11 +321,18 @@ pip install pandas numpy matplotlib seaborn scipy statsmodels
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 ├── lead_experiment_dataset.csv  # Raw 45,000-row multi-channel dataset
 ├── generate_dataset.py          # Script for synthetic data generation
+├── Conversionrate.py            # Conversion rate: omnibus chi-square and pairwise z-tests vs Control
+├── Conversionrate_VarBvsVarA.py # Direct VarB vs VarA conversion rate comparison
+├── LeadQualityScore.py          # Lead quality score: one-way ANOVA and Tukey HSD post-hoc
+├── LeadQualityWelch.py          # Lead quality score: Welch's ANOVA and Games-Howell robustness check
+├── FormCompletionTime.py        # Form completion time: ANOVA, Welch's ANOVA, and Games-Howell
+├── CPCByChannel.py              # CPC by channel: Levene's test, Welch's t-test, Mann-Whitney U
 ├── images/                      # EDA and results visualizations
 ├── README.md                    # Project documentation and campaign guide
 ```
+````
