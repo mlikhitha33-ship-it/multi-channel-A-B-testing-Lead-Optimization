@@ -62,9 +62,9 @@ Visitors were routed equally across three experimental variants (~15,000 session
 
 Three variants (the test arms, what's being compared):
 
-Control
-VarA_ShortForm
-VarB_Interactive
+* **`Control`
+* **`VarA_ShortForm`
+* **`VarB_Interactive`
 
 * **`Control` (Moderate Form Length - 6 Fields):** The standard industry baseline asking for Full Name, Work Email, Phone Number, Company Name, Team Size, and Primary Business Goal.
 * **`VarA_ShortForm` (Short Form Length - 3 Fields):** A low-friction layout requesting only Full Name, Work Email, and Company Name.
