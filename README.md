@@ -85,8 +85,9 @@ Each row in the dataset represents a single visitor session.
 | `ad_spend_cpc` | Float | Economics | Cost-Per-Click incurred for that specific visitor click. |
 
 ---
-```
 
+## Analysis RoadMap
+```
 Exploratory Data Analysis (EDA)
             ↓
 EDA Insights to Validate
