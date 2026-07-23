@@ -169,6 +169,41 @@ The following analyses will be performed during the hypothesis testing phase:
 | Cost Per Click (CPC) | Compare average CPC between Paid Search and Paid Social campaigns. | Independent Samples t-Test (or Mann-Whitney U Test) |
 
 ---
+## 🧪 Hypothesis Testing
+
+This section states the formal hypotheses and test methodology for each analysis before presenting results, following the tests laid out in the plan table above.
+
+### Conversion rate (primary KPI)
+
+**Omnibus test**
+- H₀: all three variants have the same conversion rate
+- H₁: at least one variant differs
+- Test: chi-square test of independence
+- α = 0.05
+
+**Pairwise tests (one-sided, testing for improvement specifically)**
+- H₀: the treatment variant's conversion rate equals Control's
+- H₁: the treatment variant's conversion rate is greater than Control's
+- Test: two-proportion z-test
+- α = 0.05
+- Run for VarA vs Control, VarB vs Control, and VarB vs VarA directly, since beating Control individually doesn't establish which treatment is better relative to the other
+
+Three pairwise comparisons are run off the same dataset here, which calls for a multiple comparisons adjustment. A conservative Bonferroni correction is applied as a check (requiring p < 0.017 instead of 0.05 for each comparison to hold).
+
+### Lead quality score (guardrail KPI)
+
+- H₀: all three variants have the same mean lead quality score among converters
+- H₁: at least one variant differs
+- Test: one-way ANOVA, with Levene's test run first to check the equal variance assumption
+- If variances are unequal, Welch's ANOVA is used as a robustness check instead of trusting the standard ANOVA result alone
+- Post-hoc: Tukey HSD (or Games-Howell if variances are unequal) to identify which specific pairs differ
+- α = 0.05
+
+### Form completion time and CPC by channel
+
+Still open per the plan table, not yet run.
+
+---
 
 ---
 
