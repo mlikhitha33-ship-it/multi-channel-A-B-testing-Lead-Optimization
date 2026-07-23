@@ -1,6 +1,6 @@
 # Multi-Channel A/B Testing & Lead Optimization
 
-This repository contains an end-to-end experimentation framework, raw synthetic dataset and post-test analytics pipeline designed to evaluate lead generation performance across paid and organic acquisition channels.
+This project simulates a real world multi-channel marketing A/B test involving 45,000 visitor sessions. Three lead capture form designs were evaluated using exploratory analysis, chi-square tests, ANOVA, Welch ANOVA, Games–Howell post hoc comparisons and business guardrail metrics. The interactive multi-step form (VarB) significantly improved conversion without sacrificing lead quality.
 
 ---
 
