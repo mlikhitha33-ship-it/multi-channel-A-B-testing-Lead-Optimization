@@ -30,12 +30,6 @@ To understand the dataset, we first need to establish the real-world campaign se
       <hr>
       <p><b>UX Strategy:</b> High-friction upfront qualification gate.</p>
       <ul>
-        <li>Full Name</li>
-        <li>Company Email</li>
-        <li>Job Title</li>
-        <li>Company Name</li>
-        <li>Company Size</li>
-        <li>Project Budget</li>
       </ul>
       <p><b>Trade-off:</b> Maximize lead quality at the cost of top-of-funnel drop-off.</p>
     </td>
@@ -45,9 +39,6 @@ To understand the dataset, we first need to establish the real-world campaign se
       <hr>
       <p><b>UX Strategy:</b> Low-friction volume maximization.</p>
       <ul>
-        <li>Full Name</li>
-        <li>Work Email</li>
-        <li>Project Budget</li>
       </ul>
       <br><br><br>
       <p><b>Trade-off:</b> High conversion volume; potential degradation in downstream score.</p>
@@ -58,9 +49,6 @@ To understand the dataset, we first need to establish the real-world campaign se
       <hr>
       <p><b>UX Strategy:</b> Progressive disclosure interactive diagnostic.</p>
       <ul>
-        <li><b>Step 1:</b> Primary Business Goal</li>
-        <li><b>Step 2:</b> Company Size Selector</li>
-        <li><b>Step 3:</b> Terminal Email Gate</li>
       </ul>
       <br>
       <p><b>Trade-off:</b> Mitigates cognitive load while retaining rich data payload.</p>
