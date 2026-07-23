@@ -6,9 +6,17 @@ This repository contains an end-to-end A/B testing framework designed to evaluat
 
 ## 📊 Understanding the Dataset First
 
-Before jumping into code or statistical tests, it helps to understand what the underlying data represents and how it was collected.
+Before jumping into code or statistical tests, it helps to understand what the underlying data represents, how it was collected, and why the acquisition channels matter.
 
 The dataset (`lead_experiment_dataset.csv`) contains **45,000 unique visitor sessions** logged during a controlled landing page experiment. The goal of the experiment was to test whether changing the layout of a lead generation form alters conversion rates, dwell time, and downstream lead quality across different acquisition channels.
+
+### Acquisition Channels Breakdown
+Marketing channels do not behave the same way. Visitors coming from a paid social ad behave very differently from visitors coming from a targeted search query. To model a realistic agency environment, traffic in this experiment is split across four acquisition channels:
+
+* **Paid Search (40% of traffic):** High-intent visitors coming from search ads. These users are actively searching for a specific solution, meaning they tolerate moderate form length if the fields feel relevant to their search query.
+* **Paid Social (30% of traffic):** Mobile-heavy visitors coming from feed ads. Because social ads interrupt browsing, these visitors have short attention spans and respond exceptionally well to quick, interactive touch points.
+* **Email Direct (15% of traffic):** Warm leads coming from existing subscriber lists. These users already have baseline trust with the brand, resulting in steady conversion rates across all layouts.
+* **Organic (15% of traffic):** Unpaid search or referral visitors. This group serves as a natural baseline for user behavior without ad spend distortion.
 
 ### Experimental Setup
 Visitors were randomly split evenly across three test arms (~15,000 visitors per arm):
@@ -39,8 +47,8 @@ Each row in the dataset records a single visitor session.
 
 In lead generation, growth teams face a classic trade-off:
 
-1. **Fewer fields** lower friction and boost overall form submissions--but often increase spam and low-intent leads.
-2. **More fields** filter out unqualified users and raise lead quality--but cause steep drop-offs in submission volume.
+1. **Fewer fields** lower friction and boost overall form submissions, but often increase spam and low-intent leads.
+2. **More fields** filter out unqualified users and raise lead quality, but cause steep drop-offs in submission volume.
 
 ### Hypothesis
 > *If we replace a long static form with a multi-step interactive qualification module, overall conversion rates will increase without dropping downstream lead quality scores below our guardrail threshold (80/100).*
@@ -66,7 +74,7 @@ To evaluate whether performance differences between variants were real or just r
 
 ### Primary Takeaways
 
-1. **Variant B is the Clear Winner:** It generated a **+38.1% lift** in conversion rate over Control ($p < 0.0001$) while keeping an average lead quality score of **82.1/100**--passing our guardrail requirement.
+1. **Variant B is the Clear Winner:** It generated a **+38.1% lift** in conversion rate over Control ($p < 0.0001$) while keeping an average lead quality score of **82.1/100**, passing our guardrail requirement.
 2. **Paid Social Impact:** Variant B saw its strongest performance on Paid Social traffic (+44% lift), where mobile users naturally prefer tapping interactive elements over typing into traditional text inputs.
 3. **Unit Economics:** The increase in conversion efficiency dropped overall Cost-Per-Lead (CPL) by **$12.40**, significantly boosting return on ad spend across paid channels.
 
