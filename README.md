@@ -62,21 +62,18 @@ Visitors were routed equally across three experimental variants (~15,000 session
 
 Three variants (the test arms, what's being compared):
 
-* **`Control`
-* **`VarA_ShortForm`
-* **`VarB_Interactive`
-
 * **`Control` (Moderate Form Length - 6 Fields):** The standard industry baseline asking for Full Name, Work Email, Phone Number, Company Name, Team Size, and Primary Business Goal.
 * **`VarA_ShortForm` (Short Form Length - 3 Fields):** A low-friction layout requesting only Full Name, Work Email, and Company Name.
 * **`VarB_Interactive` (Multi-Step Diagnostic Flow):** A four-screen interactive widget asking 3 tap-to-select diagnostic questions (for example, "What is your main growth bottleneck?") before prompting for a final contact screen (Name, Email, and Phone Number).
 
 KPIs / metrics (what's being measured about those variants) — per your README's metric hierarchy, there are actually three tiers, but more than three individual metrics:
 
-Tier	Metric
-Primary KPI	Conversion rate
-Secondary KPI	Cost-per-lead (CPC by channel)
-Secondary KPI	Dwell time (form completion time)
-Guardrail KPI	Lead quality score
+| Tier | Metric |
+| :--- | :--- |
+| Primary KPI | Conversion rate |
+| Secondary KPI | Cost-per-lead (CPC by channel) |
+| Secondary KPI | Dwell time (form completion time) |
+| Guardrail KPI | Lead quality score |
 
 ---
 
