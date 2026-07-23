@@ -186,7 +186,7 @@ Based on that, I rebuilt the last three plots split by the relevant grouping var
 
 ### Note on the data
 
-This dataset was generated synthetically (see `generate_dataset.py`) with channel level conversion rates and quality score distributions defined directly in the generation script. That means the quality tradeoff described above is confirming what was designed into the data rather than an emergent finding from real user behavior. I'm including this EDA process here to show the analysis approach and validation habits I'd apply to a real test, not as a claim about actual market behavior.
+This dataset was generated synthetically (see `generate_dataset.py`) with channel level conversion rates and quality score distributions defined directly in the generation script. These observations should be interpreted as validation of the simulated experiment rather than evidence of real customer behavior.
 
 ---
 
