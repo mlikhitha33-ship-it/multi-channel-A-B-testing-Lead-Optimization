@@ -134,19 +134,6 @@ This dataset was generated synthetically (see `generate_dataset.py`) with channe
 
 ---
 
-## 🎯 Strategic Hypothesis & Metric Structure
-
-### The Core Trade-Off
-Reducing form fields lowers submission friction and increases lead volume, but often introduces spam or unqualified leads. Increasing form fields improves lead qualification, but causes steep drop-offs in total volume.
-
-### Hypothesis
-> *Replacing a standard 6-field static form with a multi-step interactive qualification module will increase overall lead conversion rates without dropping average lead quality scores below our guardrail threshold of 80/100.*
-
-### Metric Hierarchy
-1. **Primary KPI:** Lead Conversion Rate ($\text{Total Converted Leads} / \text{Total Unique Visitors}$).
-2. **Secondary KPIs:** Cost-Per-Lead (CPL) and Dwell Time (`time_spent_sec`).
-3. **Guardrail KPI:** Average Lead Quality Score ($0\text{--}100$). A variant must maintain an average score of $\ge 80/100$ among converted leads to be considered viable.
-
 ---
 
 ## 🛠️ How to Run the Analysis Locally
