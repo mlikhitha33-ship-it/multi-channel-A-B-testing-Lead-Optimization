@@ -101,47 +101,6 @@ Install the required Python packages:
 pip install pandas numpy matplotlib seaborn scipy statsmodels
 ```
 
-### 2. Run Analysis Script
-Execute the following script to load the dataset and compute statistical significance:
-
-```python
-import numpy as np
-import pandas as pd
-from statsmodels.stats.proportion import proportions_ztest
-
-# Load raw experiment dataset
-df = pd.read_csv('lead_experiment_dataset.csv')
-
-# Aggregate conversion metrics per variant
-summary = (
-    df.groupby('variant')
-    .agg(
-        total_visitors=('lead_id', 'count'),
-        total_leads=('converted', 'sum'),
-        conversion_rate=('converted', 'mean'),
-    )
-    .reset_index()
-)
-
-# Extract Control baseline totals
-control_leads = summary.loc[summary['variant'] == 'Control', 'total_leads'].values[0]
-control_visitors = summary.loc[summary['variant'] == 'Control', 'total_visitors'].values[0]
-
-# Compute two-sample Z-tests against Control
-p_vals = []
-for idx, row in summary.iterrows():
-    if row['variant'] == 'Control':
-        p_vals.append(1.0)
-    else:
-        counts = np.array([row['total_leads'], control_leads])
-        nobs = np.array([row['total_visitors'], control_visitors])
-        _, pval = proportions_ztest(counts, nobs)
-        p_vals.append(pval)
-
-summary['p_value'] = p_vals
-print(summary.to_string(index=False))
-```
-
 ---
 
 ## 📁 Repository Structure
