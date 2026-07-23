@@ -40,7 +40,6 @@ To understand the dataset, we first need to establish the real-world campaign se
       <p><b>UX Strategy:</b> Low-friction volume maximization.</p>
       <ul>
       </ul>
-      <br><br><br>
       <p><b>Trade-off:</b> High conversion volume; potential degradation in downstream score.</p>
     </td>
     <td width="34%" valign="top" bgcolor="#f8f9fa">
