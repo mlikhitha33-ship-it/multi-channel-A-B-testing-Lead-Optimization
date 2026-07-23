@@ -75,18 +75,49 @@ Each row in the dataset represents a single visitor session.
 
 ---
 
-## 🎯 Strategic Hypothesis & Metric Structure
+## 🔍 Exploratory Data Analysis and Validation Checks
 
-### The Core Trade-Off
-Reducing form fields lowers submission friction and increases lead volume, but often introduces spam or unqualified leads. Increasing form fields improves lead qualification, but causes steep drop-offs in total volume.
+Before running any hypothesis test I wanted to confirm the randomization actually held and get a feel for what the data looked like, so this section walks through that process.
 
-### Hypothesis
-> *Replacing a standard 6-field static form with a multi-step interactive qualification module will increase overall lead conversion rates without dropping average lead quality scores below our guardrail threshold of 80/100.*
+### Randomization checks
 
-### Metric Hierarchy
-1. **Primary KPI:** Lead Conversion Rate ($\text{Total Converted Leads} / \text{Total Unique Visitors}$).
-2. **Secondary KPIs:** Cost-Per-Lead (CPL) and Dwell Time (`time_spent_sec`).
-3. **Guardrail KPI:** Average Lead Quality Score ($0\text{--}100$). A variant must maintain an average score of $\ge 80/100$ among converted leads to be considered viable.
+The first thing to check with any A/B test is whether the split actually came out balanced or whether something skewed one arm. I ran a sample ratio mismatch check comparing the actual visitor counts per variant against the expected even split. The chi-square test came back at p = 0.047, which is well within normal sampling variation for a fair three way split (SRM checks typically only flag a real problem below p = 0.001).
+
+I also checked whether channel and device were evenly spread across the three variants, since an imbalance there would mean any difference we see later could be coming from the mix of traffic rather than the form itself. Both came back balanced (channel p = 0.30, device p = 0.79), and there were no duplicate lead ids or missing values anywhere in the file.
+
+### Overview plots
+
+![EDA overview: visitor counts by variant, channel and device, plus raw distributions for time on page, lead quality score and CPC](images/eda_overview.png)
+
+The first pass at EDA covered the raw shape of the data: visitor counts by variant, channel and device, plus distributions for time on page, lead quality score and CPC.
+
+The variant, channel and device counts confirmed what the README already describes: a near even three way split across variants, Paid Search as the largest channel, and mobile traffic dominating overall.
+
+The other three plots needed a second look before they made sense.
+
+**Time on page (all visitors)** showed a steep spike near zero seconds that decayed quickly. This is the bounce behavior, people who landed and left without converting, and since only around 5 percent of visitors convert, bounces completely dominate the chart. The actual form completion times were buried in there and not visible as their own shape.
+
+**Lead quality score (converters only)** looked like a normal bell curve centered around 75 to 85. This was already filtered to converters only, since non-converters get a score of zero by definition and would otherwise swamp the chart. On its own this plot didn't say much because it blended all three variants into one distribution.
+
+**CPC (paid channels only)** had an odd shape, roughly flat, then a visible step up in the middle, then flat again. This turned out to be an artifact of blending two different channels into one histogram. Paid Social runs $1.20 to $2.90 per click and Paid Search runs $2.40 to $4.50, so the $2.40 to $2.90 range gets contributions from both channels while the rest of the range only gets one, creating a bump that looks like a real pattern but isn't.
+
+### Splitting by variant and channel
+
+![Time on page and lead quality score by variant, and CPC by channel, after splitting out the grouping variable](images/eda_updated.png)
+
+Based on that, I rebuilt the last three plots split by the relevant grouping variable instead of looking at everyone combined.
+
+**Time on page, converters only, by variant**, came out as expected given the form designs: Control has the highest median, VarB_Interactive sits in the middle, and VarA_ShortForm is fastest to fill out. Fewer fields means faster to fill out, and the interactive flow lands in between a short form and a full form. This is mostly a sanity check that the data behaves the way the underlying design intends.
+
+**Lead quality score, converters only, by variant**, is the more interesting one. Control and VarB_Interactive sit at nearly the same median, with similar spread. VarA_ShortForm sits noticeably lower, with its whole box shifted down compared to the other two. So the short form converts more visitors but the leads it brings in look lower quality, while the interactive flow does not show that same tradeoff.
+
+**CPC, paid channels only, split by channel**, resolved the earlier odd shape. Paid Social and Paid Search each show their own roughly flat distribution over their respective price range, and the earlier bump was just the overlap of the two histograms drawn on top of each other rather than a real pattern in the cost data.
+
+### Note on the data
+
+This dataset was generated synthetically (see `generate_dataset.py`) with channel level conversion rates and quality score distributions defined directly in the generation script. That means the quality tradeoff described above is confirming what was designed into the data rather than an emergent finding from real user behavior. I'm including this EDA process here to show the analysis approach and validation habits I'd apply to a real test, not as a claim about actual market behavior.
+
+---
 
 ---
 
