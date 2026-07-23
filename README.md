@@ -12,15 +12,14 @@ To understand the dataset, we first need to establish the real-world campaign se
 * **The Campaign Window:** A 30-day live paid media campaign run from June 1, 2026, to June 30, 2026.
 * **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
 
-```text
-┌─────────────────────────────┐
-│        HERO SECTION         │  <- visible without scrolling
-│  Headline + short pitch     │
-│  [ Lead Form / Variant ]    │  <- form or interactive module sits here
-├─────────────────────────────┤
-│      (rest of page,         │  <- below the fold, not seen
-│   supporting content etc.)  │     until user scrolls
-└─────────────────────────────┘
+### 📐 Page Layout Architecture
+
+| Viewport | Section Component | Purpose & Visibility |
+| :---: | :--- | :--- |
+| 👁️ **Above the Fold**<br>*(Visible without scrolling)* | **Hero Header** | Core value proposition & primary headline |
+| | **Interactive Area** | **[ Lead Form / Experiment Variant ]** |
+| 📜 **Below the Fold**<br>*(Requires scrolling)* | **Social Proof** | Client logos, case study metrics, and testimonials |
+| | **Footer Details** | FAQs, privacy policy, and company information |
 ```
 
 ## 🔀 Traffic Routing Mechanics & Core Principles
