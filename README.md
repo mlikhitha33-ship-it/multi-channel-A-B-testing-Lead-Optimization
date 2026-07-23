@@ -8,7 +8,7 @@ This repository contains an end-to-end experimentation framework, raw dataset, a
 
 To understand the dataset, we first need to establish the real-world campaign setup, user journey, and ad mechanics behind the experiment.
 
-* **The Business Offer:** A free 30-minute Digital Marketing Strategy Session for mid-sized business owners looking to scale their online ad leads
+* **The Business Offer:** A free 30-minute Digital Marketing Strategy Session for mid-sized business owners looking to scale their online ad leads.
 * **The Campaign Window:** A 30-day live paid media campaign run from June 1, 2026, to June 30, 2026.
 * **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
 
@@ -67,7 +67,7 @@ To understand the dataset, we first need to establish the real-world campaign se
     </td>
   </tr>
 </table>
-```
+
 
 ## 🔀 Traffic Routing Mechanics & Core Principles
 
