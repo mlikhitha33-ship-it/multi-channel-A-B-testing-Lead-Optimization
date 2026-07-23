@@ -242,9 +242,11 @@ This section states the formal hypotheses and test methodology for each metric b
 
 - H₀: all three variants have the same mean form completion time
 - H₁: at least one variant differs
-- Test: one-way ANOVA, with the same variance check and robustness fallback as lead quality score
+- Test: one-way ANOVA
 - α = 0.05
-- Not yet run
+- Assumption check: Levene's test for equal variance, run before trusting the standard ANOVA
+- Robustness check: Welch's ANOVA used since variances were unequal
+- Post-hoc: Games-Howell to identify which specific pairs differ
 
 ### Cost-per-lead by channel (secondary KPI)
 
@@ -252,7 +254,8 @@ This section states the formal hypotheses and test methodology for each metric b
 - H₁: Paid Search and Paid Social differ in mean CPC
 - Test: independent samples t-test
 - α = 0.05
-- Not yet run
+- Assumption check: Levene's test for equal variance, run before choosing between Student's and Welch's t-test
+- Robustness check: Mann-Whitney U as a non-parametric cross check
 
 ---
 ---
