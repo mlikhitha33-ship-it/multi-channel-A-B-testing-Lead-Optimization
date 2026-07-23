@@ -14,12 +14,61 @@ To understand the dataset, we first need to establish the real-world campaign se
 
 ### 📐 Page Layout Architecture
 
-| Viewport | Section Component | Purpose & Visibility |
-| :---: | :--- | :--- |
-| 👁️ **Above the Fold**<br>*(Visible without scrolling)* | **Hero Header** | Core value proposition & primary headline |
-| | **Interactive Area** | **[ Lead Form / Experiment Variant ]** |
-| 📜 **Below the Fold**<br>*(Requires scrolling)* | **Social Proof** | Client logos, case study metrics, and testimonials |
-| | **Footer Details** | FAQs, privacy policy, and company information |
+### 📐 Experiment Architecture & UI Flow
+
+![Lead Capture Form Experiment Diagram](images/experiment_design.png)
+
+---
+
+<div align="center">
+  <h3>🔀 Traffic Allocation & Variant Architecture</h3>
+</div>
+
+<table width="100%">
+  <tr>
+    <td width="33%" valign="top" bgcolor="#f8f9fa">
+      <h4>🟦 CONTROL (33%)</h4>
+      <p><b>Model:</b> 6-Field Static Form</p>
+      <hr>
+      <p><b>UX Strategy:</b> High-friction upfront qualification gate.</p>
+      <ul>
+        <li>Full Name</li>
+        <li>Company Email</li>
+        <li>Job Title</li>
+        <li>Company Name</li>
+        <li>Company Size</li>
+        <li>Project Budget</li>
+      </ul>
+      <p><b>Trade-off:</b> Maximize lead quality at the cost of top-of-funnel drop-off.</p>
+    </td>
+    <td width="33%" valign="top" bgcolor="#f8f9fa">
+      <h4>🟩 VARIANT A (33%)</h4>
+      <p><b>Model:</b> 3-Field Short Form</p>
+      <hr>
+      <p><b>UX Strategy:</b> Low-friction volume maximization.</p>
+      <ul>
+        <li>Full Name</li>
+        <li>Work Email</li>
+        <li>Project Budget</li>
+      </ul>
+      <br><br><br>
+      <p><b>Trade-off:</b> High conversion volume; potential degradation in downstream score.</p>
+    </td>
+    <td width="34%" valign="top" bgcolor="#f8f9fa">
+      <h4>🟧 VARIANT B (34%)</h4>
+      <p><b>Model:</b> Multi-Step Wizard</p>
+      <hr>
+      <p><b>UX Strategy:</b> Progressive disclosure interactive diagnostic.</p>
+      <ul>
+        <li><b>Step 1:</b> Primary Business Goal</li>
+        <li><b>Step 2:</b> Company Size Selector</li>
+        <li><b>Step 3:</b> Terminal Email Gate</li>
+      </ul>
+      <br>
+      <p><b>Trade-off:</b> Mitigates cognitive load while retaining rich data payload.</p>
+    </td>
+  </tr>
+</table>
 ```
 
 ## 🔀 Traffic Routing Mechanics & Core Principles
