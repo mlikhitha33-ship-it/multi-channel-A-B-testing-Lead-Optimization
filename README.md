@@ -12,8 +12,6 @@ To understand the dataset, we first need to establish the real-world campaign se
 * **The Campaign Window:** A 30-day live paid media campaign run from June 1, 2026, to June 30, 2026.
 * **Ad Mechanics & Timing:** Ads ran continuously across Google Search, LinkedIn and Meta Social feeds, and dedicated email sends. When a user clicked an ad or email link, they landed on the campaign page where the lead form was displayed immediately above the fold in the main hero section.
 
-### 📐 Page Layout Architecture
-
 ### 📐 Experiment Architecture & UI Flow
 
 ![Lead Capture Form Experiment Diagram](images/experiment_design.png)
@@ -73,7 +71,7 @@ To understand the dataset, we first need to establish the real-world campaign se
 
 ## 🔀 Traffic Routing Mechanics & Core Principles
 
-A common point of confusion in A/B testing is whether a single user sees multiple form layouts. **Each individual visitor saw only one specific variant during their journey.**
+ **Each individual visitor saw only one specific variant during their journey.**
 
 When a user clicked an ad or email link, a split-URL experiment router evaluated the incoming session and assigned the user to a treatment group before the page rendered:
 
