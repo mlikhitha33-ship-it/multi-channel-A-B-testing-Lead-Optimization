@@ -212,7 +212,6 @@ The exploratory data analysis identified several patterns that warrant formal st
 
 ---
 
-
 ## Hypothesis Testing
 
 This section states the formal hypotheses for each metric before presenting results, followed by a single table covering the test methodology for all four.
@@ -244,12 +243,14 @@ This section states the formal hypotheses for each metric before presenting resu
 
 ### Test specifications
 
-| Metric | Test | α | Assumption Check | Robustness Check | Post-Hoc | Script |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Conversion rate | Chi-square (omnibus), two-proportion z-test (pairwise) | 0.05 | — | Bonferroni correction for multiple comparisons | — | `Conversionrate.py`, `Conversionrate_VarBvsVarA.py` |
-| Lead quality score | One-way ANOVA | 0.05 | Levene's test | Welch's ANOVA if variances unequal | Games-Howell | `LeadQualityScore.py`, `LeadQualityWelch.py` |
-| Form completion time | One-way ANOVA | 0.05 | Levene's test | Welch's ANOVA if variances unequal | Games-Howell | `FormCompletionTime.py` |
-| CPC by channel | Independent samples t-test | 0.05 | Levene's test | Mann-Whitney U | — | `CPCByChannel.py` |
+All tests use α = 0.05.
+
+| Metric | Test | Assumption Check | Robustness Check | Post-Hoc | Script |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Conversion rate | Chi-square (omnibus), two-proportion z-test (pairwise) | — | Bonferroni correction for multiple comparisons | — | `Conversionrate.py`, `Conversionrate_VarBvsVarA.py` |
+| Lead quality score | One-way ANOVA | Levene's test | Welch's ANOVA if variances unequal | Games-Howell | `LeadQualityScore.py`, `LeadQualityWelch.py` |
+| Form completion time | One-way ANOVA | Levene's test | Welch's ANOVA if variances unequal | Games-Howell | `FormCompletionTime.py` |
+| CPC by channel | Independent samples t-test | Levene's test | Mann-Whitney U | — | `CPCByChannel.py` |
 
 ---
 
