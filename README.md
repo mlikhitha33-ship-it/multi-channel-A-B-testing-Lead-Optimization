@@ -105,7 +105,7 @@ The **Primary KPI** determines the winning variant, **Secondary KPIs** provide a
 | Priority | Metric | Purpose | Success Criteria |
 |----------|--------|---------|------------------|
 | **Primary KPI** | Conversion Rate | Primary objective of the experiment—maximize the percentage of visitors who become leads. | Highest statistically significant conversion rate |
-| **Secondary KPI** | Cost per Lead (CPL) | Evaluates acquisition efficiency while accounting for channel differences. | Lower or unchanged CPL |
+| **Secondary KPI** | Cost per Click (CPC by channel) | Evaluates channel-level acquisition cost. | Lower or comparable CPC relative to channel benchmarks |
 | **Secondary KPI** | Form Completion Time (Dwell Time) | Measures user friction during form completion. | Lower completion time without reducing conversions |
 | **Guardrail KPI** | Lead Quality Score | Ensures higher conversions are not achieved by generating lower-quality leads. | Maintain or improve lead quality |
 
@@ -253,7 +253,7 @@ This section states the formal hypotheses and test methodology for each metric b
 - Robustness check: Welch's ANOVA used since variances were unequal
 - Post-hoc: Games-Howell to identify which specific pairs differ
 
-### Cost-per-lead by channel (secondary KPI)
+### Cost per click by channel (secondary KPI)
 
 - H₀: Paid Search and Paid Social have the same mean CPC
 - H₁: Paid Search and Paid Social differ in mean CPC
@@ -311,7 +311,7 @@ A one-way ANOVA across the three variants was significant (F = 3059.85, p < 0.00
 
 This result tracks the number of fields in each form design, fewer fields take less time to complete. It's a confirmatory check rather than a new finding, and it supports the conversion rate result rather than complicating it, faster completion is consistent with why VarA and VarB both outperform Control on conversion.
 
-### Cost-per-lead by channel (secondary KPI)
+### Cost per click by channel (secondary KPI)
 
 Paid Search costs significantly more per click than Paid Social ($3.45 vs $2.05 average, a $1.40 difference). Levene's test showed unequal variance between the two channels (p < 0.0001), so Welch's t-test was used (t = 226.13, p < 0.000001). A Mann-Whitney U check agrees (p < 0.000001).
 
