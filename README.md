@@ -267,7 +267,7 @@ This section states the formal hypotheses and test methodology for each metric b
 
 ## Validated Findings
 
-![Executive Summary](images/validated_findings_dashboard_v8.png.png)
+![Executive Summary](images/validated_findings_dashboard_v8.png)
 
 ### Conversion rate (primary KPI)
 
