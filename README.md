@@ -215,54 +215,46 @@ The exploratory data analysis identified several patterns that warrant formal st
 
 ## Hypothesis Testing
 
-This section states the formal hypotheses and test methodology for each metric before presenting results, following the tests laid out in the plan table above. Each metric follows the same structure: null hypothesis, alternative hypothesis, test used, and any assumption checks that apply.
+## Hypothesis Testing
+
+This section states the formal hypotheses for each metric before presenting results, followed by a single table covering the test methodology for all four.
 
 ### Conversion rate (primary KPI)
 
-**Omnibus test**
+**Omnibus**
 - H₀: all three variants have the same conversion rate
 - H₁: at least one variant differs
-- Test: chi-square test of independence
-- α = 0.05
 
-**Pairwise tests** (one-sided, testing for improvement specifically)
+**Pairwise** (one-sided, testing for improvement specifically)
 - H₀: the treatment variant's conversion rate equals Control's
-- H₁: the treatment variant's conversion rate is greater than Control's
-- Test: two-proportion z-test
-- α = 0.05
-- Run for VarA vs Control, VarB vs Control, and VarB vs VarA directly, since beating Control individually doesn't establish which treatment is better relative to the other
-- Multiple comparisons check: three pairwise tests run off the same dataset call for an adjustment, a conservative Bonferroni correction (requiring p < 0.017 instead of 0.05) is applied to confirm the ranking holds
+- H₁: the treatment variant's conversion rate is greater than Control's, run for VarA vs Control, VarB vs Control, and VarB vs VarA directly, since beating Control individually doesn't establish which treatment is better relative to the other
 
 ### Lead quality score (guardrail KPI)
 
 - H₀: all three variants have the same mean lead quality score among converters
 - H₁: at least one variant differs
-- Test: one-way ANOVA
-- α = 0.05
-- Assumption check: Levene's test for equal variance, run before trusting the standard ANOVA
-- Robustness check: Welch's ANOVA used if variances are unequal
-- Post-hoc: Tukey HSD, or Games-Howell if variances are unequal, to identify which specific pairs differ
 
 ### Form completion time (secondary KPI)
 
 - H₀: all three variants have the same mean form completion time
 - H₁: at least one variant differs
-- Test: one-way ANOVA
-- α = 0.05
-- Assumption check: Levene's test for equal variance, run before trusting the standard ANOVA
-- Robustness check: Welch's ANOVA used since variances were unequal
-- Post-hoc: Games-Howell to identify which specific pairs differ
 
 ### Cost per click by channel (secondary KPI)
 
 - H₀: Paid Search and Paid Social have the same mean CPC
 - H₁: Paid Search and Paid Social differ in mean CPC
-- Test: independent samples t-test
-- α = 0.05
-- Assumption check: Levene's test for equal variance, run before choosing between Student's and Welch's t-test
-- Robustness check: Mann-Whitney U as a non-parametric cross check
+
+### Test specifications
+
+| Metric | Test | α | Assumption Check | Robustness Check | Post-Hoc |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Conversion rate | Chi-square (omnibus), two-proportion z-test (pairwise) | 0.05 | — | Bonferroni correction for multiple comparisons | — |
+| Lead quality score | One-way ANOVA | 0.05 | Levene's test | Welch's ANOVA if variances unequal | Games-Howell |
+| Form completion time | One-way ANOVA | 0.05 | Levene's test | Welch's ANOVA if variances unequal | Games-Howell |
+| CPC by channel | Independent samples t-test | 0.05 | Levene's test | Mann-Whitney U | — |
 
 ---
+
 ---
 
 ## Validated Findings
