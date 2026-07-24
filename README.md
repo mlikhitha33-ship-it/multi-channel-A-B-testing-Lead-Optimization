@@ -104,7 +104,7 @@ The **Primary KPI** determines the winning variant, **Secondary KPIs** provide a
 
 | Priority | Metric | Purpose | Success Criteria |
 |----------|--------|---------|------------------|
-| **Primary KPI** | Conversion Rate | Primary objective of the experiment—maximize the percentage of visitors who become leads. | Highest statistically significant conversion rate |
+| **Primary KPI** | Conversion Rate | Primary objective of the experiment - Maximize the percentage of visitors who become leads. | Highest statistically significant conversion rate |
 | **Secondary KPI** | Cost per Click (CPC by channel) | Evaluates channel-level acquisition cost. | Lower or comparable CPC relative to channel benchmarks |
 | **Secondary KPI** | Form Completion Time (Dwell Time) | Measures user friction during form completion. | Lower completion time without reducing conversions |
 | **Guardrail KPI** | Lead Quality Score | Ensures higher conversions are not achieved by generating lower-quality leads. | Maintain or improve lead quality |
