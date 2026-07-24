@@ -215,8 +215,6 @@ The exploratory data analysis identified several patterns that warrant formal st
 
 ## Hypothesis Testing
 
-## Hypothesis Testing
-
 This section states the formal hypotheses for each metric before presenting results, followed by a single table covering the test methodology for all four.
 
 ### Conversion rate (primary KPI)
@@ -252,8 +250,6 @@ This section states the formal hypotheses for each metric before presenting resu
 | Lead quality score | One-way ANOVA | 0.05 | Levene's test | Welch's ANOVA if variances unequal | Games-Howell |
 | Form completion time | One-way ANOVA | 0.05 | Levene's test | Welch's ANOVA if variances unequal | Games-Howell |
 | CPC by channel | Independent samples t-test | 0.05 | Levene's test | Mann-Whitney U | — |
-
----
 
 ---
 
