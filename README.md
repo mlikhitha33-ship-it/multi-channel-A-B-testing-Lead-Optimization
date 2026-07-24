@@ -267,7 +267,7 @@ This section states the formal hypotheses and test methodology for each metric b
 
 ## Validated Findings
 
-This section covers all four metrics from the plan table: conversion rate as the primary KPI, lead quality score as the guardrail, and form completion time plus CPC by channel as the two secondary metrics.
+![Lead Capture Form Experiment Diagram](images/validated_findings_dashboard_v8.png.png)
 
 ### Conversion rate (primary KPI)
 
