@@ -198,7 +198,7 @@ This dataset was generated synthetically (see `generate_dataset.py`) with channe
 
 ## EDA Summary and Next Steps
 
-The exploratory data analysis identified several patterns that warrant formal statistical evaluation. While these observations provide useful direction, they should not be interpreted as statistically significant findings.The following analyses will be performed during the hypothesis testing phase:
+EDA hinted at one pattern worth confirming with a real test: VarA_ShortForm looked like it might be converting more visitors at the cost of lead quality. That's not proven yet, a visual difference in a boxplot isn't a statistical result. The other EDA observations (bounce behavior, the CPC channel artifact) were explanatory or diagnostic, not things that needed a formal testHere's what gets tested next:
 
 | Analysis Area | Purpose | Planned Statistical Test |
 |---------------|---------|--------------------------|
