@@ -204,8 +204,8 @@ Before testing that pattern, three validation checks confirmed the experiment it
 
 | Validation Check | Test | Result |
 |---|---|---|
-| Sample Ratio Mismatch | Chi-Square Goodness-of-Fit | p = 0.047, no mismatch (SRM threshold is typically p < 0.001) | Visitors were split fairly across the three forms
-| Traffic Source Distribution | Chi-Square Test of Independence | p = 0.30, balanced across variants |
+| Sample Ratio Mismatch | Chi-Square Goodness-of-Fit | p = 0.047, no mismatch (SRM threshold is typically p < 0.001) . Visitors were split fairly across the three forms | 
+| Traffic Source Distribution | Chi-Square Test of Independence | p = 0.30, balanced across variants. No form got an easier or harder mix of channels, results are comparable |
 | Device Distribution | Chi-Square Test of Independence | p = 0.79, balanced across variants |
 
 With that confirmed, here's what gets tested next:
