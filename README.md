@@ -206,7 +206,7 @@ Before testing that pattern, three validation checks confirmed the experiment it
 |---|---|---|
 | Sample Ratio Mismatch | Chi-Square Goodness-of-Fit | p = 0.047, no mismatch (SRM threshold is typically p < 0.001) . Visitors were split fairly across the three forms | 
 | Traffic Source Distribution | Chi-Square Test of Independence | p = 0.30, balanced across variants. No form got an easier or harder mix of channels, results are comparable |
-| Device Distribution | Chi-Square Test of Independence | p = 0.79, balanced across variants |
+| Device Distribution | Chi-Square Test of Independence | p = 0.79, balanced across variants. No form got a skewed mobile/desktop mix, results are comparable |
 
 With that confirmed, here's what gets tested next:
 
