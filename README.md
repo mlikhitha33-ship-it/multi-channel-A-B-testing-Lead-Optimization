@@ -76,11 +76,9 @@ When a user clicked an ad or email link, a split-URL experiment router evaluated
 
 ---
 
-## Acquisition sources & Form Tolerances
+## Acquisition sources & Visitor Behavior
 
-Marketing traffic is not homogeneous. A user actively seeking a solution responds differently to friction than a user casually scrolling a social feed.
-
-In this campaign, 45,000 unique visitor sessions were logged across four acquisition channels:
+In this campaign, 45,000 unique visitor sessions were logged across four acquisition channels. Marketing traffic is not homogeneous. A user actively seeking a solution responds differently to friction than a user casually scrolling a social feed.
 
 * **Paid Search (40% of traffic):** High-intent visitors arriving from Google Search ads. These users were actively looking for a solution and demonstrated tolerance for a **moderate form length** (defined as 6 standard fields capturing contact details and business context), provided every field felt directly relevant to their search query.
 * **Paid Social (30% of traffic):** Mobile-heavy visitors arriving from LinkedIn and Meta feed ads. Because social ads interrupt active scrolling, these users exhibited low tolerance for traditional forms and responded best to quick, tap-based interactions.
