@@ -152,6 +152,10 @@ Business Recommendations
 
 ---
 
+### Note on the data
+
+This dataset was generated synthetically (see `generate_dataset.py`) with channel level conversion rates and quality score distributions defined directly in the generation script. So the EDA observations are interpreted as validation of the simulated experiment rather than evidence of real customer behavior.
+
 ## Exploratory Data Analysis and Validation Checks
 
 Before running any hypothesis test I wanted to confirm the randomization actually held and get a feel for what the data looked like, so this section walks through that process.
@@ -170,8 +174,6 @@ I started EDA by looking at the raw shape of the data: visitor counts by variant
 
 * **Variant, channel and device counts** matched what the Acquisition Channels and Experimental Setup sections already described, 3 form variants got roughly equal traffic with Paid Search as the largest channel and mobile traffic dominating overall.
 
-The other three plots needed a second look before they made sense.
-
 * **Time on page (all visitors)** showed a steep spike near zero seconds that decayed quickly. This is the bounce behavior, people who landed and left without converting, and since only around 5 percent of visitors convert, bounces completely dominate the chart. The actual form completion times were buried in there and not visible as their own shape.
 
 * **Lead quality score (converters only)** looked like a normal bell curve centered around 75 to 85. This was already filtered to converters only, since non-converters get a score of zero by definition and would otherwise swamp the chart. On its own this plot didn't say much because it blended all three variants into one distribution.
@@ -189,10 +191,6 @@ Based on that, I rebuilt the last three plots split by the relevant grouping var
 **Lead quality score, converters only, by variant**, is the more interesting one. Control and VarB_Interactive sit at nearly the same median, with similar spread. VarA_ShortForm sits noticeably lower, with its whole box shifted down compared to the other two. So the short form converts more visitors but the leads it brings in look lower quality, while the interactive flow does not show that same tradeoff.
 
 **CPC, paid channels only, split by channel**, resolved the earlier odd shape. Paid Social and Paid Search each show their own roughly flat distribution over their respective price range, and the earlier bump was just the overlap of the two histograms drawn on top of each other rather than a real pattern in the cost data.
-
-### Note on the data
-
-This dataset was generated synthetically (see `generate_dataset.py`) with channel level conversion rates and quality score distributions defined directly in the generation script. These observations should be interpreted as validation of the simulated experiment rather than evidence of real customer behavior.
 
 ---
 
