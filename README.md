@@ -162,7 +162,7 @@ The first thing to check with any A/B test is whether the split actually came ou
 
 I also checked whether channel and device were evenly spread across the three variants, since an imbalance there would mean any difference we see later could be coming from the mix of traffic rather than the form itself. Both came back balanced (channel p = 0.30, device p = 0.79), and there were no duplicate lead ids or missing values anywhere in the file.
 
-### Overview plots
+### Raw Data Overview
 
 ![EDA overview: visitor counts by variant, channel and device, plus raw distributions for time on page, lead quality score and CPC](images/eda_overview.png)
 
