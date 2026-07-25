@@ -168,8 +168,7 @@ I started EDA by looking at the raw shape of the data: visitor counts by variant
 
 ![EDA overview: visitor counts by variant, channel and device, plus raw distributions for time on page, lead quality score and CPC](images/eda_overview.png)
 
-
-The variant, channel and device counts matched what's described earlier in the Acquisition Channels and Experimental Setup sections above: a near even three way split across variants, Paid Search as the largest channel, and mobile traffic dominating overall.
+* **Variant, channel and device counts** matched what the Acquisition Channels and Experimental Setup sections already described, 3 form variants got roughly equal traffic with Paid Search as the largest channel and mobile traffic dominating overall.
 
 The other three plots needed a second look before they made sense.
 
