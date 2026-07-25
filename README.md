@@ -321,10 +321,11 @@ Ship VarB_Interactive. It's the only variant that wins on conversion rate withou
 Install the required Python packages:
 
 ```bash
-pip install pandas numpy matplotlib seaborn scipy statsmodels
+pip install pandas numpy matplotlib seaborn scipy statsmodels pingouin
 ```
+### 2. Run the analysis scripts
 
----
+Each script loads `lead_experiment_dataset.csv` directly and prints its results to the console.
 
 ## Repository Structure
 
