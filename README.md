@@ -216,6 +216,16 @@ The exploratory data analysis identified several patterns that warrant formal st
 
 This section states the formal hypotheses for each metric before presenting results, followed by a single table covering the test methodology for all four.
 
+### Hypotheses
+
+| Metric | H₀ (null) | H₁ (alternative) |
+| :--- | :--- | :--- |
+| Conversion rate (omnibus) | All three variants have the same conversion rate | At least one variant differs |
+| Conversion rate (pairwise, one-sided) | The treatment variant's conversion rate equals Control's | The treatment variant's conversion rate is greater than Control's, tested for VarA vs Control, VarB vs Control, and VarB vs VarA |
+| Lead quality score | All three variants have the same mean lead quality score among converters | At least one variant differs |
+| Form completion time | All three variants have the same mean form completion time | At least one variant differs |
+| CPC by channel | Paid Search and Paid Social have the same mean CPC | Paid Search and Paid Social differ in mean CPC |
+
 ### Conversion rate (primary KPI)
 
 **Omnibus**
