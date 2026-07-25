@@ -226,30 +226,6 @@ This section states the formal hypotheses for each metric before presenting resu
 | Form completion time | All three variants have the same mean form completion time | At least one variant differs |
 | CPC by channel | Paid Search and Paid Social have the same mean CPC | Paid Search and Paid Social differ in mean CPC |
 
-### Conversion rate (primary KPI)
-
-**Omnibus**
-- H₀: all three variants have the same conversion rate
-- H₁: at least one variant differs
-
-**Pairwise** (one-sided, testing for improvement specifically)
-- H₀: the treatment variant's conversion rate equals Control's
-- H₁: the treatment variant's conversion rate is greater than Control's, run for VarA vs Control, VarB vs Control, and VarB vs VarA directly, since beating Control individually doesn't establish which treatment is better relative to the other
-
-### Lead quality score (guardrail KPI)
-
-- H₀: all three variants have the same mean lead quality score among converters
-- H₁: at least one variant differs
-
-### Form completion time (secondary KPI)
-
-- H₀: all three variants have the same mean form completion time
-- H₁: at least one variant differs
-
-### Cost per click by channel (secondary KPI)
-
-- H₀: Paid Search and Paid Social have the same mean CPC
-- H₁: Paid Search and Paid Social differ in mean CPC
 
 ### Test specifications
 
