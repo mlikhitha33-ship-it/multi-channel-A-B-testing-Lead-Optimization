@@ -76,7 +76,7 @@ When a user clicked an ad or email link, a split-URL experiment router evaluated
 
 ---
 
-## Acquisition Channels & Form Tolerances
+## Acquisition sources & Form Tolerances
 
 Marketing traffic is not homogeneous. A user actively seeking a solution responds differently to friction than a user casually scrolling a social feed.
 
