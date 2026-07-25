@@ -198,13 +198,20 @@ This dataset was generated synthetically (see `generate_dataset.py`) with channe
 
 ## EDA Summary and Next Steps
 
-EDA hinted at one pattern worth confirming with a real test: VarA_ShortForm looked like it might be converting more visitors at the cost of lead quality. That's not proven yet, a visual difference in a boxplot isn't a statistical result. The other EDA observations (bounce behavior, the CPC channel artifact) were explanatory or diagnostic, not things that needed a formal testHere's what gets tested next:
+EDA hinted at one pattern worth confirming with a real test: VarA_ShortForm looked like it might be converting more visitors at the cost of lead quality. That's not proven yet, a visual difference in a boxplot isn't a statistical result. The other EDA observations (bounce behavior, the CPC channel artifact) were explanatory or diagnostic, not things that needed a formal test.
+
+Before testing that pattern, three validation checks confirmed the experiment itself was set up correctly, summarized here (full detail in Randomization checks above):
+
+| Validation Check | Test | Result |
+|---|---|---|
+| Sample Ratio Mismatch | Chi-Square Goodness-of-Fit | p = 0.047, no mismatch (SRM threshold is typically p < 0.001) | Visitors were split fairly across the three forms
+| Traffic Source Distribution | Chi-Square Test of Independence | p = 0.30, balanced across variants |
+| Device Distribution | Chi-Square Test of Independence | p = 0.79, balanced across variants |
+
+With that confirmed, here's what gets tested next:
 
 | Analysis Area | Purpose | Planned Statistical Test |
 |---------------|---------|--------------------------|
-| Sample Ratio Mismatch (SRM) | Validate that traffic was randomly assigned to each experimental variant. | Chi-Square Goodness-of-Fit |
-| Traffic Source Distribution | Verify that acquisition channels are balanced across variants. | Chi-Square Test of Independence |
-| Device Distribution | Verify that device types are balanced across variants. | Chi-Square Test of Independence |
 | Conversion Rate | Determine whether conversion rates differ between variants. | Chi-Square Test of Independence / Two-Proportion Z-Test |
 | Form Completion Time | Determine whether average completion times differ between variants. | One-Way ANOVA (or Kruskal-Wallis) |
 | Lead Quality Score | Determine whether average lead quality differs between variants. | One-Way ANOVA (or Welch ANOVA) |
