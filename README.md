@@ -194,9 +194,9 @@ Based on that, I rebuilt the last three plots split by the relevant grouping var
 
 ## EDA Summary and Next Steps
 
-EDA hinted at one pattern worth confirming with a real test: VarA_ShortForm looked like it might be converting more visitors at the cost of lead quality. That's not proven yet, a visual difference in a boxplot isn't a statistical result. The other EDA observations (bounce behavior, the CPC channel artifact) were explanatory or diagnostic, not things that needed a formal test.
+EDA pointed to one pattern worth testing: VarA_ShortForm may be converting more visitors at the cost of lead quality. A boxplot difference isn't a statistical result, so this gets a formal test next. The other EDA observations (bounce behavior, the CPC channel artifact) were explanatory, not testable claims.
 
-Before testing that pattern, three validation checks confirmed the experiment itself was set up correctly, summarized here (full detail in Randomization checks above):
+Three validation checks already confirmed the experiment was set up correctly (full detail in Randomization checks):
 
 | Validation Check | Test | Result |
 |---|---|---|
