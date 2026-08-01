@@ -308,16 +308,22 @@ Ship VarB_Interactive. It's the only variant that wins on conversion rate withou
 
 ## How to Run the Analysis Locally
 
-### 1. Requirements
-Install the required Python packages:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/mlikhitha33-ship-it/multi-channel-A-B-testing-Lead-Optimization.git
+cd multi-channel-A-B-testing-Lead-Optimization
+```
+
+### 2. Install requirements
 
 ```bash
 pip install pandas numpy matplotlib seaborn scipy statsmodels pingouin
 ```
-### 2. Run the analysis scripts
 
-!git clone https://github.com/mlikhitha33-ship-it/multi-channel-A-B-testing-Lead-Optimization.git
-Each script loads `lead_experiment_dataset.csv` directly and prints its results to the console.
+### 3. Run the scripts
+
+Each script loads `lead_experiment_dataset.csv` directly and either prints results to the console or saves a chart to `images/`.
 
 ## Repository Structure
 
