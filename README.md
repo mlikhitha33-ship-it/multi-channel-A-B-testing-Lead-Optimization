@@ -312,19 +312,19 @@ Deploy VarB_Interactive as the default lead capture form. It's the only variant 
 ![Recommendation rollout: stage VarB at 50% of traffic, monitor for 2-4 weeks, scale to 100% once results match testing](images/recommendation_next_steps.png)
 
 
-## How to Run the Analysis Locally
+## How to Run the Analysis in Google Colab
 
-### 1. Launch Google Colab & Clone the repository
+### 1. Clone the repository
 
-```bash
+```python
 !git clone https://github.com/mlikhitha33-ship-it/multi-channel-A-B-testing-Lead-Optimization.git
-cd multi-channel-A-B-testing-Lead-Optimization
+%cd multi-channel-A-B-testing-Lead-Optimization
 ```
 
 ### 2. Install requirements
 
 ```bash
-pip install pandas numpy matplotlib seaborn scipy statsmodels pingouin
+!pip install pandas numpy matplotlib seaborn scipy statsmodels pingouin
 ```
 
 ### 3. Run the scripts
