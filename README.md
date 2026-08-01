@@ -305,12 +305,14 @@ VarB_Interactive is the strongest performer across the board. It improves the pr
 
 Deploy VarB_Interactive as the default lead capture form. It's the only variant that increases conversion without a hidden cost, unlike the short form, which converts more visitors but lets weaker leads through. The completion time is longer than the short form, but still faster than what's live today, a reasonable tradeoff for a variant that wins cleanly on both volume and quality.
 
-Suggested next steps: roll out to 100% of traffic, monitor conversion and lead quality for the first two to four weeks to confirm the lift holds outside the test window, and revisit the short form only if a future test can close its quality gap.
+**Suggested rollout**: start VarB at 50% of traffic alongside the current form for 2-4 weeks, confirm conversion rate and lead quality hold at the levels seen in testing, then move to 100% once confirmed.
+
+![Recommendation rollout: stage VarB at 50% of traffic, monitor for 2-4 weeks, scale to 100% once results match testing](images/recommendation_next_steps.png)
 
 
 ## How to Run the Analysis Locally
 
-### 1. Clone the repository
+### 1. Launch Google Colab & Clone the repository
 
 ```bash
 git clone https://github.com/mlikhitha33-ship-it/multi-channel-A-B-testing-Lead-Optimization.git
