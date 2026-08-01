@@ -331,19 +331,14 @@ pip install pandas numpy matplotlib seaborn scipy statsmodels pingouin
 
 Each script loads `lead_experiment_dataset.csv` directly and either prints results to the console or saves a chart to `images/`.
 
-## Repository Structure
-
-```text
-├── lead_experiment_dataset.csv  # Raw 45,000-row multi-channel dataset
-├── generate_dataset.py          # Script for synthetic data generation
-├── SplitByVariantChannel.py     # Generates eda_updated.png
-├── Conversionrate.py            # Conversion rate: omnibus chi-square and pairwise z-tests vs Control
-├── Conversionrate_VarBvsVarA.py # Direct VarB vs VarA conversion rate comparison
-├── LeadQualityScore.py          # Lead quality score: one-way ANOVA and Tukey HSD post-hoc
-├── LeadQualityWelch.py          # Lead quality score: Welch's ANOVA and Games-Howell robustness check
-├── FormCompletionTime.py        # Form completion time: ANOVA, Welch's ANOVA, and Games-Howell
-├── CPCByChannel.py              # CPC by channel: Levene's test, Welch's t-test, Mann-Whitney U
-├── images/                      # EDA and results visualizations
-├── README.md                    # Project documentation and campaign guide
+```bash
+python RawDataOverview.py           # Generates eda_overview.png
+python SplitByVariantChannel.py     # Generates eda_updated.png
+python Conversionrate.py            # Omnibus chi-square and pairwise z-tests vs Control
+python Conversionrate_VarBvsVarA.py # Direct VarB vs VarA comparison (run Conversionrate.py first)
+python LeadQualityScore.py          # One-way ANOVA and Levene's test
+python LeadQualityWelch.py          # Welch's ANOVA and Games-Howell (robustness check)
+python FormCompletionTime.py        # One-way ANOVA and Levene's test
+python CPCByChannel.py              # Independent t-test and Levene's test
 ```
 ````
