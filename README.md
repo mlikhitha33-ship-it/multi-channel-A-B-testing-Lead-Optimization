@@ -316,6 +316,7 @@ pip install pandas numpy matplotlib seaborn scipy statsmodels pingouin
 ```
 ### 2. Run the analysis scripts
 
+!git clone https://github.com/mlikhitha33-ship-it/multi-channel-A-B-testing-Lead-Optimization.git
 Each script loads `lead_experiment_dataset.csv` directly and prints its results to the console.
 
 ## Repository Structure
@@ -323,6 +324,7 @@ Each script loads `lead_experiment_dataset.csv` directly and prints its results 
 ```text
 ├── lead_experiment_dataset.csv  # Raw 45,000-row multi-channel dataset
 ├── generate_dataset.py          # Script for synthetic data generation
+├── SplitByVariantChannel.py     # Generates eda_updated.png
 ├── Conversionrate.py            # Conversion rate: omnibus chi-square and pairwise z-tests vs Control
 ├── Conversionrate_VarBvsVarA.py # Direct VarB vs VarA conversion rate comparison
 ├── LeadQualityScore.py          # Lead quality score: one-way ANOVA and Tukey HSD post-hoc
