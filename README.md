@@ -323,7 +323,7 @@ Deploy VarB_Interactive as the default lead capture form. It's the only variant 
 
 ### 2. Install requirements
 
-```bash
+```python
 !pip install pandas numpy matplotlib seaborn scipy statsmodels pingouin
 ```
 
@@ -331,14 +331,14 @@ Deploy VarB_Interactive as the default lead capture form. It's the only variant 
 
 Each script loads `lead_experiment_dataset.csv` directly and either prints results to the console or saves a chart to `images/`.
 
-```bash
-python RawDataOverview.py           # Generates eda_overview.png
-python SplitByVariantChannel.py     # Generates eda_updated.png
-python Conversionrate.py            # Omnibus chi-square and pairwise z-tests vs Control
-python Conversionrate_VarBvsVarA.py # Direct VarB vs VarA comparison (run Conversionrate.py first)
-python LeadQualityScore.py          # One-way ANOVA and Levene's test
-python LeadQualityWelch.py          # Welch's ANOVA and Games-Howell (robustness check)
-python FormCompletionTime.py        # One-way ANOVA and Levene's test
-python CPCByChannel.py              # Independent t-test and Levene's test
+```python
+!python RawDataOverview.py           # Generates eda_overview.png
+!python SplitByVariantChannel.py     # Generates eda_updated.png
+!python Conversionrate.py            # Omnibus chi-square and pairwise z-tests vs Control
+!python Conversionrate_VarBvsVarA.py # Direct VarB vs VarA comparison (run Conversionrate.py first)
+!python LeadQualityScore.py          # One-way ANOVA and Levene's test
+!python LeadQualityWelch.py          # Welch's ANOVA and Games-Howell (robustness check)
+!python FormCompletionTime.py        # One-way ANOVA and Levene's test
+!python CPCByChannel.py              # Independent t-test and Levene's test
 ```
 ````
