@@ -303,7 +303,11 @@ VarB_Interactive is the strongest performer across the board. It improves the pr
 
 ### Recommendation
 
-Ship VarB_Interactive. It's the only variant that wins on conversion rate without giving up anything on lead quality, the improvement holds after correcting for running multiple comparisons, and its completion time, while longer than the short form, is still well under Control's. VarA_ShortForm isn't a safe alternative despite its own conversion lift, since that lift comes from letting weaker leads through, which is exactly what the guardrail metric was there to catch.
+### Recommendation
+
+Deploy VarB_Interactive as the default lead capture form. It's the only variant that increases conversion without a hidden cost, unlike the short form, which converts more visitors but lets weaker leads through. The completion time is longer than the short form, but still faster than what's live today, a reasonable tradeoff for a variant that wins cleanly on both volume and quality.
+
+Suggested next steps: roll out to 100% of traffic, monitor conversion and lead quality for the first two to four weeks to confirm the lift holds outside the test window, and revisit the short form only if a future test can close its quality gap.
 
 
 ## How to Run the Analysis Locally
