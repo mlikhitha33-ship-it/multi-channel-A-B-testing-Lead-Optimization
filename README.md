@@ -317,7 +317,7 @@ Deploy VarB_Interactive as the default lead capture form. It's the only variant 
 ### 1. Launch Google Colab & Clone the repository
 
 ```bash
-git clone https://github.com/mlikhitha33-ship-it/multi-channel-A-B-testing-Lead-Optimization.git
+!git clone https://github.com/mlikhitha33-ship-it/multi-channel-A-B-testing-Lead-Optimization.git
 cd multi-channel-A-B-testing-Lead-Optimization
 ```
 
