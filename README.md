@@ -332,11 +332,11 @@ Deploy VarB_Interactive as the default lead capture form. It's the only variant 
 Each script loads `lead_experiment_dataset.csv` directly and either prints results to the console or saves a chart to `images/`.
 
 ```python
-!python generate_dataset.py          # 1. Synthetic CSV data file for the project
+!python generate_dataset.py          # 1. Synthetic CSV data file for the project. The dataset (`lead_experiment_dataset.csv`) is already included in the repo.
 !python RawDataOverview.py           # 2. Generates eda_overview.png
 !python SplitByVariantChannel.py     # 3. Generates eda_updated.png
-!python Conversionrate.py            # 4. Omnibus chi-square and pairwise z-tests vs Control. should be run as a cell in the same notebook
-!python Conversionrate_VarBvsVarA.py # 5. Direct VarB vs VarA comparison (run Conversionrate.py first)
+!python Conversionrate.py            # 4. Omnibus chi-square and pairwise z-tests vs Control.
+!python Conversionrate_VarBvsVarA.py # 5. Direct VarB vs VarA comparison (reuses a `summary` table built in `Conversionrate.py`'s memory. Run Conversionrate.py first)
 !python LeadQualityScore.py          # 6. One-way ANOVA and Levene's test
 !python LeadQualityWelch.py          # 7. Welch's ANOVA and Games-Howell (robustness check)
 !python FormCompletionTime.py        # 8. One-way ANOVA and Levene's test
